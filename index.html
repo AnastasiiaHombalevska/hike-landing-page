@@ -1,11 +1,687 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p>Hello</p>
-</body>
+<!doctype html>
+<html lang="ukr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Походи Карпатами для тих, хто хоче відчути гори, побачити неймовірні краєвиди та знайти свою пригоду."
+    />
+
+    <title>Hike — походи та пригоди</title>
+
+    <link rel="stylesheet" href="./src/scss/main.scss" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__container">
+        <a class="logo" href="/" aria-label="Hike — головна"> Hike </a>
+
+        <!-- Desktop navigation -->
+        <nav class="navigation" aria-label="Головна навігація">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link" href="#hikes">Походи</a>
+            </li>
+
+            <li class="navigation__item">
+              <a class="navigation__link" href="#hot-spots"> HOT SPOT </a>
+            </li>
+
+            <li class="navigation__item">
+              <a class="navigation__link" href="#routes"> Маршрути </a>
+            </li>
+
+            <li class="navigation__item">
+              <a class="navigation__link" href="#reviews"> Відгуки </a>
+            </li>
+
+            <li class="navigation__item">
+              <a class="navigation__link" href="#gallery"> Галерея </a>
+            </li>
+
+            <li class="navigation__item">
+              <a class="navigation__link" href="#faq"> FAQ </a>
+            </li>
+          </ul>
+        </nav>
+
+        <a class="header__tourist-link" href="/tourist.html"> Туристу </a>
+
+        <a class="button button--outline" href="#contacts"> Зв'язатись </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Відкрити меню"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+        </button>
+      </div>
+
+      <nav
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-label="Мобільна навігація"
+        aria-hidden="true"
+      >
+        <ul class="mobile-menu__list">
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#hikes"> Походи </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#hot-spots"> HOT SPOT </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#routes"> Маршрути </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#reviews"> Відгуки </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#gallery"> Галерея </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="/tourist.html"> Туристу </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="mobile-menu__link" href="#faq"> FAQ </a>
+          </li>
+
+          <li class="mobile-menu__item">
+            <a class="button mobile-menu__button" href="#contacts">
+              Зв'язатись
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__container">
+          <div class="hero__content">
+            <p class="hero__subtitle">Карпати · пригоди · природа</p>
+
+            <h1 class="hero__title">Вирушай туди, де починається пригода</h1>
+
+            <p class="hero__description">
+              Походи Карпатами для тих, хто хоче відчути гори, побачити
+              неймовірні краєвиди та знайти свою пригоду.
+            </p>
+
+            <a class="button" href="#hikes"> Переглянути походи </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="hikes section" id="hikes">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Обирай свою пригоду</p>
+
+            <h2 class="section-heading__title">Розклад походів</h2>
+
+            <p class="section-heading__description">
+              Актуальні походи та найближчі дати. Обирай маршрут, який підходить
+              саме тобі.
+            </p>
+          </div>
+
+          <div class="hikes__list" data-hikes-list></div>
+        </div>
+      </section>
+
+      <section class="hot-spots section" id="hot-spots">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">HOT SPOT</p>
+
+            <h2 class="section-heading__title">Гарячі пропозиції</h2>
+
+            <p class="section-heading__description">
+              Вільні місця на найближчі походи за спеціальною ціною.
+            </p>
+          </div>
+
+          <article class="hot-spot">
+            <div class="hot-spot__image-wrapper">
+              <img
+                class="hot-spot__image"
+                src="./src/assets/images/hot-spot.jpg"
+                alt="Гірський пейзаж"
+              />
+            </div>
+
+            <div class="hot-spot__content">
+              <span class="hot-spot__label"> -20% </span>
+
+              <h3 class="hot-spot__title">Похід на Горгани</h3>
+
+              <time class="hot-spot__date" datetime="2026-09-18T08:00:00">
+                18–19 вересня
+              </time>
+
+              <div class="hot-spot__prices">
+                <del>2 500 грн</del>
+                <strong>2 000 грн</strong>
+              </div>
+
+              <p class="hot-spot__places">Залишилось 2 місця</p>
+
+              <div
+                class="hot-spot__timer countdown"
+                data-countdown="2026-09-18T08:00:00"
+                aria-label="Зворотній відлік до початку походу"
+              >
+                <div class="countdown__item">
+                  <span class="countdown__value" data-countdown-days> 00 </span>
+
+                  <span class="countdown__label"> днів </span>
+                </div>
+
+                <div class="countdown__item">
+                  <span class="countdown__value" data-countdown-hours>
+                    00
+                  </span>
+
+                  <span class="countdown__label"> годин </span>
+                </div>
+
+                <div class="countdown__item">
+                  <span class="countdown__value" data-countdown-minutes>
+                    00
+                  </span>
+
+                  <span class="countdown__label"> хвилин </span>
+                </div>
+
+                <div class="countdown__item">
+                  <span class="countdown__value" data-countdown-seconds>
+                    00
+                  </span>
+
+                  <span class="countdown__label"> секунд </span>
+                </div>
+              </div>
+
+              <button class="button" type="button">Забронювати</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="how-it-works section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Все просто</p>
+
+            <h2 class="section-heading__title">Як це відбувається</h2>
+          </div>
+
+          <ol class="steps">
+            <li class="step">
+              <span class="step__number">01</span>
+
+              <h3 class="step__title">Обрати похід</h3>
+
+              <p class="step__description">
+                Обери маршрут та дату, які тобі підходять.
+              </p>
+            </li>
+
+            <li class="step">
+              <span class="step__number">02</span>
+
+              <h3 class="step__title">Забронювати</h3>
+
+              <p class="step__description">
+                Залиш заявку та отримай підтвердження участі.
+              </p>
+            </li>
+
+            <li class="step">
+              <span class="step__number">03</span>
+
+              <h3 class="step__title">Підготуватися</h3>
+
+              <p class="step__description">
+                Отримай необхідну інформацію та список спорядження.
+              </p>
+            </li>
+
+            <li class="step">
+              <span class="step__number">04</span>
+
+              <h3 class="step__title">Вирушити</h3>
+
+              <p class="step__description">
+                Зустрічаємось та вирушаємо назустріч пригоді.
+              </p>
+            </li>
+          </ol>
+
+          <a class="button button--outline" href="/tourist.html"> Туристу </a>
+        </div>
+      </section>
+
+      <section class="routes section" id="routes">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Досліджуй</p>
+
+            <h2 class="section-heading__title">Маршрути</h2>
+          </div>
+
+          <div class="routes__list">
+            <article class="route-card">
+              <img
+                class="route-card__image"
+                src="./src/assets/images/route-1.jpg"
+                alt="Маршрут у Карпатах"
+              />
+
+              <div class="route-card__content">
+                <span class="route-card__region"> Закарпаття </span>
+
+                <h3 class="route-card__title">Боржава</h3>
+
+                <p class="route-card__description">
+                  Гірський хребет із відкритими панорамами та мальовничими
+                  полонинами.
+                </p>
+
+                <ul class="route-card__details">
+                  <li>18 км</li>
+                  <li>1 день</li>
+                  <li>Середня</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="route-card">
+              <img
+                class="route-card__image"
+                src="./src/assets/images/route-2.jpg"
+                alt="Гірський маршрут"
+              />
+
+              <div class="route-card__content">
+                <span class="route-card__region"> Івано-Франківщина </span>
+
+                <h3 class="route-card__title">Горгани</h3>
+
+                <p class="route-card__description">
+                  Дикі гори, кам'янисті стежки та неймовірні панорами.
+                </p>
+
+                <ul class="route-card__details">
+                  <li>24 км</li>
+                  <li>2 дні</li>
+                  <li>Складна</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="route-card">
+              <img
+                class="route-card__image"
+                src="./src/assets/images/route-3.jpg"
+                alt="Карпатський маршрут"
+              />
+
+              <div class="route-card__content">
+                <span class="route-card__region"> Закарпаття </span>
+
+                <h3 class="route-card__title">Свидовець</h3>
+
+                <p class="route-card__description">
+                  Високогірні озера, полонини та мальовничі хребти.
+                </p>
+
+                <ul class="route-card__details">
+                  <li>20 км</li>
+                  <li>1 день</li>
+                  <li>Середня</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews section" id="reviews">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Враження</p>
+
+            <h2 class="section-heading__title">Відгуки учасників</h2>
+          </div>
+
+          <div class="reviews__list">
+            <article class="review">
+              <div class="review__author">
+                <img
+                  class="review__photo"
+                  src="./src/assets/images/review-1.jpg"
+                  alt="Марія"
+                />
+
+                <div>
+                  <h3 class="review__name">Марія</h3>
+
+                  <p class="review__hike">Похід на Петрос</p>
+                </div>
+              </div>
+
+              <blockquote class="review__text">
+                Неймовірний маршрут, чудова компанія та краєвиди, які хочеться
+                запам'ятати назавжди.
+              </blockquote>
+            </article>
+
+            <article class="review">
+              <div class="review__author">
+                <img
+                  class="review__photo"
+                  src="./src/assets/images/review-2.jpg"
+                  alt="Олександр"
+                />
+
+                <div>
+                  <h3 class="review__name">Олександр</h3>
+
+                  <p class="review__hike">Похід на Горгани</p>
+                </div>
+              </div>
+
+              <blockquote class="review__text">
+                Все було чудово організовано. Обов'язково піду ще раз.
+              </blockquote>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery section" id="gallery">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">З моментів наших походів</p>
+
+            <h2 class="section-heading__title">Галерея</h2>
+          </div>
+
+          <div class="gallery__viewport">
+            <div class="gallery__track">
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-1.jpg"
+                  alt="Учасники походу в горах"
+                />
+              </figure>
+
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-2.jpg"
+                  alt="Гірський краєвид"
+                />
+              </figure>
+
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-3.jpg"
+                  alt="Похід у Карпатах"
+                />
+              </figure>
+
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-4.jpg"
+                  alt="Група туристів у горах"
+                />
+              </figure>
+
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-5.jpg"
+                  alt="Природа Карпат"
+                />
+              </figure>
+
+              <figure class="gallery__item">
+                <img
+                  src="./src/assets/images/gallery-6.jpg"
+                  alt="Гірський маршрут"
+                />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">FAQ</p>
+
+            <h2 class="section-heading__title">Часті запитання</h2>
+
+            <p class="section-heading__description">
+              Відповіді на основні запитання перед походом.
+            </p>
+          </div>
+
+          <div class="faq__list">
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                Чи потрібно мати досвід походів?
+              </summary>
+
+              <div class="faq-item__content">
+                <div class="faq-item__content-inner">
+                  <div class="faq-item__answer">
+                    Ні, досвід не обов'язковий. Ми підбираємо маршрути
+                    відповідно до рівня підготовки учасників.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                Який рівень фізичної підготовки потрібен?
+              </summary>
+
+              <div class="faq-item__content">
+                <div class="faq-item__content-inner">
+                  <div class="faq-item__answer">
+                    Для кожного походу вказано рівень складності та необхідну
+                    фізичну підготовку.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                Що потрібно взяти із собою?
+              </summary>
+
+              <div class="faq-item__content">
+                <div class="faq-item__content-inner">
+                  <div class="faq-item__answer">
+                    Після бронювання ви отримаєте список необхідного спорядження
+                    та речей, які потрібно взяти.
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-item__question">
+                Що входить у вартість походу?
+              </summary>
+
+              <div class="faq-item__content">
+                <div class="faq-item__content-inner">
+                  <div class="faq-item__answer">
+                    Умови та перелік включених послуг залежать від конкретного
+                    походу.
+                  </div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta section" id="contacts">
+        <div class="container cta__container">
+          <p class="cta__eyebrow">Готовий до пригоди?</p>
+
+          <h2 class="cta__title">Твій наступний маршрут починається тут</h2>
+
+          <p class="cta__description">
+            Обирай похід або зв'яжись зі мною, якщо потрібна допомога з вибором
+            маршруту.
+          </p>
+
+          <div class="cta__actions">
+            <a class="button" href="#hikes"> Обрати похід </a>
+
+            <a
+              class="button button--outline"
+              href="https://t.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Telegram
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="hike-modal" aria-hidden="true">
+      <div class="modal__overlay"></div>
+
+      <div
+        class="modal__content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button class="modal__close" type="button" aria-label="Закрити">
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="modal__image-wrapper">
+          <img class="modal__image" src="" alt="" />
+        </div>
+
+        <div class="modal__body">
+          <p class="modal__date"></p>
+
+          <h2 class="modal__title" id="modal-title"></h2>
+
+          <p class="modal__description"></p>
+
+          <dl class="modal__details">
+            <div class="modal__detail">
+              <dt>Місце</dt>
+              <dd data-modal-location></dd>
+            </div>
+
+            <div class="modal__detail">
+              <dt>Тривалість</dt>
+              <dd data-modal-duration></dd>
+            </div>
+
+            <div class="modal__detail">
+              <dt>Довжина</dt>
+              <dd data-modal-distance></dd>
+            </div>
+
+            <div class="modal__detail">
+              <dt>Складність</dt>
+              <dd data-modal-difficulty></dd>
+            </div>
+
+            <div class="modal__detail">
+              <dt>Вільні місця</dt>
+              <dd data-modal-places></dd>
+            </div>
+
+            <div class="modal__detail">
+              <dt>Вартість</dt>
+              <dd data-modal-price></dd>
+            </div>
+          </dl>
+
+          <button class="button modal__book-button" type="button">
+            Забронювати
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="footer__brand">
+          <a class="logo" href="/"> Hike </a>
+
+          <p>Походи, гори та пригоди.</p>
+        </div>
+
+        <nav class="footer__navigation" aria-label="Навігація у футері">
+          <a href="#hikes">Походи</a>
+          <a href="#hot-spots">HOT SPOT</a>
+          <a href="#routes">Маршрути</a>
+          <a href="#reviews">Відгуки</a>
+          <a href="#gallery">Галерея</a>
+          <a href="/tourist.html">Туристу</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="footer__contacts">
+          <a href="tel:+380000000000"> +38 (000) 000-00-00 </a>
+
+          <a href="mailto:hello@hike.com"> hello@hike.com </a>
+
+          <a href="https://t.me/" target="_blank" rel="noopener noreferrer">
+            Telegram
+          </a>
+
+          <a
+            href="https://instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="container">
+          <p>© 2026 Hike. Усі права захищені.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
 </html>

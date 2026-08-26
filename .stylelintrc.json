@@ -1,0 +1,19 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "declaration-empty-line-before": null,
+    "scss/dollar-variable-empty-line-before": null,
+
+    "media-feature-range-notation": null,
+
+    "color-hex-length": null,
+    "color-function-alias-notation": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+
+    "value-keyword-case": null,
+
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
+  }
+}
