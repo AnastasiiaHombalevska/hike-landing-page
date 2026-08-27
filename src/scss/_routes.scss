@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.routes {
+  background-color: $color-background;
+
+  &__list {
+    display: grid;
+    gap: 20px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.route-card {
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: $color-white;
+  transition:
+    transform $transition,
+    box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-card;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 22px;
+  }
+
+  &__region {
+    display: block;
+    margin-bottom: 7px;
+    color: $color-accent;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 26px;
+  }
+
+  &__description {
+    margin-bottom: 18px;
+    color: $color-text-light;
+    line-height: 1.6;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: $color-text-light;
+    font-size: 12px;
+  }
+
+  @include tablet {
+    &__content {
+      padding: 26px;
+    }
+  }
+}

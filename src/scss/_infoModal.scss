@@ -1,0 +1,161 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+
+    .modal__content {
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    cursor: pointer;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 800px;
+    max-height: calc(100svh - 20px);
+    overflow-y: auto;
+    border-radius: 18px;
+    background-color: $color-white;
+    transform: translateY(15px) scale(0.98);
+    transition: transform 0.3s ease;
+  }
+
+  &__close {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background-color: $color-text;
+
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &__image-wrapper {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__body {
+    padding: 26px 20px;
+  }
+
+  &__date {
+    margin-bottom: 8px;
+    color: $color-accent;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__title {
+    margin-bottom: 14px;
+    font-size: clamp(30px, 8vw, 48px);
+    line-height: 1;
+  }
+
+  &__description {
+    margin-bottom: 26px;
+    color: $color-text-light;
+    line-height: 1.6;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 0 0 26px;
+  }
+
+  &__detail {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-border;
+
+    dt {
+      margin-bottom: 4px;
+      color: $color-text-light;
+      font-size: 12px;
+    }
+
+    dd {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  @include tablet {
+    padding: 20px;
+
+    &__content {
+      max-height: calc(100svh - 40px);
+      border-radius: 24px;
+    }
+
+    &__body {
+      padding: 40px;
+    }
+
+    &__details {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .button {
+      width: auto;
+    }
+  }
+}

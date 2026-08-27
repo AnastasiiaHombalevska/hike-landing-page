@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalPrice = modal ? modal.querySelector('[data-modal-price]') : null;
 
   let hikes = [];
+  let hotHikes = [];
   let selectedHike = null;
 
   /* =====================================================
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // delete func
   function getPlacesWord(number) {
     const value = Number(number);
 
@@ -151,45 +153,36 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
 
       <div class="hike-card__content">
-
-        <div class="hike-card__meta">
-          <time datetime="${hike.date}">
-            ${formatDate(hike.date)}
-          </time>
-
-          <span>
-            ${hike.location}
-          </span>
-        </div>
-
         <h3 class="hike-card__title">
           ${hike.title}
         </h3>
+
+        <div class="hike-card__details">
+          <div class="hike-card__meta">
+            <time datetime="${hike.date}">
+              ${formatDate(hike.date)}
+            </time>
+          </div>
+
+          <span class="hike-card__location">${hike.location}</span>
+          <span class="hike-card__duration">${hike.duration}</span>
+          <span class="hike-card__difficulty">${hike.difficulty}</span>
+        </div>
 
         <p class="hike-card__description">
           ${hike.description}
         </p>
 
-        <ul class="hike-card__details">
-          <li>${hike.duration}</li>
-          <li>${hike.difficulty}</li>
-        </ul>
-
         <div class="hike-card__footer">
+          <span class="hike-card__places">
+            ${hike.leftPlaces} / ${hike.places} місць
+          </span>
 
           <div class="hike-card__price">
-            <span>Вартість</span>
-
             <strong>
               ${formatPrice(hike.price)}
             </strong>
           </div>
-
-          <span class="hike-card__places">
-            ${hike.places}
-            ${getPlacesWord(hike.places)}
-          </span>
-
         </div>
 
         <div class="hike-card__actions">
@@ -285,6 +278,266 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadHikes();
 
+  /* =====================================================
+     HOT HIKES
+  ===================================================== */
+
+  const hotHikesSection = document.querySelector('.hot-spots');
+  const hotHikesList = document.querySelector('.hot-hikes__list');
+
+  function createHotHike(hike) {
+    const article = document.createElement('article');
+
+    article.className = 'hot-spot';
+
+    article.innerHTML = `
+      <div class="hot-spot__image-wrapper">
+        <img
+          class="hot-spot__image"
+          src="${hike.image}"
+          alt="${hike.title}"
+        />
+      </div>
+
+      <div class="hot-spot__content">
+        <span class="hot-spot__label">
+          HOT SPOT
+        </span>
+
+        <h3 class="hot-spot__title">
+          ${hike.title}
+        </h3>
+
+        <div class="hot-spot__prices">
+          <del>${formatPrice(hike.price)}</del>
+          <strong>${formatPrice(hike.discountPrice)}</strong>
+        </div>
+
+        <p class="hot-spot__places">
+          Залишилось ${hike.leftPlaces} ${getPlacesWord(hike.leftPlaces)}
+        </p>
+
+        <div
+          class="hot-spot__timer countdown"
+          data-countdown="${hike.date}"
+          aria-label="Зворотній відлік до початку походу"
+        >
+          <div class="countdown__item">
+            <span
+              class="countdown__value"
+              data-countdown-days
+            >
+              00
+            </span>
+            <span class="countdown__label">
+              днів
+            </span>
+          </div>
+
+          <div class="countdown__item">
+            <span
+              class="countdown__value"
+              data-countdown-hours
+            >
+              00
+            </span>
+            <span class="countdown__label">
+              годин
+            </span>
+          </div>
+
+          <div class="countdown__item">
+            <span
+              class="countdown__value"
+              data-countdown-minutes
+            >
+              00
+            </span>
+            <span class="countdown__label">
+              хвилин
+            </span>
+          </div>
+
+          <div class="countdown__item">
+            <span
+              class="countdown__value"
+              data-countdown-seconds
+            >
+              00
+            </span>
+            <span class="countdown__label">
+              секунд
+            </span>
+          </div>
+        </div>
+
+        <button
+          class="button"
+          type="button"
+        >
+          Забронювати
+        </button>
+
+      </div>
+    `;
+
+    const bookButton = article.querySelector('.button');
+
+    bookButton.addEventListener('click', function () {
+      openBooking(hike);
+    });
+
+    return article;
+  }
+
+  function renderHotHikes(data) {
+    if (!hotHikesList) {
+      return;
+    }
+
+    hotHikesList.innerHTML = '';
+
+    data.forEach(function (hike) {
+      const hotHike = createHotHike(hike);
+
+      hotHikesList.appendChild(hotHike);
+    });
+
+    initHotHikeCountdowns();
+  }
+
+  function loadHotHikes() {
+    if (!hotHikesSection || !hotHikesList) {
+      return;
+    }
+
+    fetch('/data/hot-hikes.json')
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then(function (data) {
+        if (!Array.isArray(data)) {
+          throw new Error(
+            'hot-hikes.json має містити масив обʼєктів'
+          );
+        }
+
+        hotHikes = data;
+
+        if (hotHikes.length === 0) {
+          return;
+        }
+
+        renderHotHikes(hotHikes);
+      })
+      .catch(function (error) {
+        console.error(
+          'Помилка завантаження гарячих походів:',
+          error
+        );
+      });
+  }
+
+  loadHotHikes();
+
+  /* =====================================================
+     HOT SPOT COUNTDOWN
+  ===================================================== */
+
+  function initHotHikeCountdowns() {
+    const countdowns = document.querySelectorAll('[data-countdown]');
+
+    countdowns.forEach(function (countdown) {
+      const targetDate = countdown.dataset.countdown;
+
+      const daysElement = countdown.querySelector(
+        '[data-countdown-days]'
+      );
+
+      const hoursElement = countdown.querySelector(
+        '[data-countdown-hours]'
+      );
+
+      const minutesElement = countdown.querySelector(
+        '[data-countdown-minutes]'
+      );
+
+      const secondsElement = countdown.querySelector(
+        '[data-countdown-seconds]'
+      );
+
+      let countdownInterval;
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const target = new Date(targetDate).getTime();
+        const difference = target - now;
+
+        if (difference <= 0) {
+          if (daysElement) {
+            daysElement.textContent = '00';
+          }
+
+          if (hoursElement) {
+            hoursElement.textContent = '00';
+          }
+
+          if (minutesElement) {
+            minutesElement.textContent = '00';
+          }
+
+          if (secondsElement) {
+            secondsElement.textContent = '00';
+          }
+
+          clearInterval(countdownInterval);
+
+          return;
+        }
+
+        const days = Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        );
+
+        const hours = Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        );
+
+        const minutes = Math.floor(
+          (difference / (1000 * 60)) % 60
+        );
+
+        const seconds = Math.floor(
+          (difference / 1000) % 60
+        );
+
+        if (daysElement) {
+          daysElement.textContent = String(days).padStart(2, '0');
+        }
+
+        if (hoursElement) {
+          hoursElement.textContent = String(hours).padStart(2, '0');
+        }
+
+        if (minutesElement) {
+          minutesElement.textContent = String(minutes).padStart(2, '0');
+        }
+
+        if (secondsElement) {
+          secondsElement.textContent = String(seconds).padStart(2, '0');
+        }
+      }
+
+      updateCountdown();
+
+      countdownInterval = setInterval(updateCountdown, 1000);
+    });
+  }
+  
   /* =====================================================
      MODAL
   ===================================================== */
@@ -512,4 +765,7 @@ document.addEventListener('DOMContentLoaded', function () {
       galleryTrack.appendChild(clone);
     });
   }
+
+  // window.history.scrollRestoration = 'manual';
+  // window.scrollTo(0, 0);
 });

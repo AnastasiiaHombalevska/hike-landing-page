@@ -1,6 +1,6 @@
 [
   {
-    "image": "./src/assets/images/hike-1.jpg",
+    "image": "./src/assets/images/petros.jpeg",
     "title": "Похід на Петрос",
     "date": "2026-09-12",
     "location": "Карпати",
@@ -8,10 +8,11 @@
     "difficulty": "Середня",
     "price": 1500,
     "places": 3,
+    "leftPlaces": 1,
     "description": "Одноденний похід мальовничим маршрутом із неймовірними краєвидами на Карпати."
   },
   {
-    "image": "./src/assets/images/hike-2.jpg",
+    "image": "./src/assets/images/gorgany.png",
     "title": "Похід на Горгани",
     "date": "2026-09-18",
     "location": "Карпати",
@@ -19,10 +20,11 @@
     "difficulty": "Складна",
     "price": 2500,
     "places": 5,
+    "leftPlaces": 1,
     "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
   },
   {
-    "image": "./src/assets/images/hike-2.jpg",
+    "image": "./src/assets/images/gorgany_2.jpg",
     "title": "Похід на Горгани",
     "date": "2026-09-18",
     "location": "Карпати",
@@ -30,17 +32,7 @@
     "difficulty": "Складна",
     "price": 2500,
     "places": 5,
-    "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
-  },
-  {
-    "image": "./src/assets/images/hike-2.jpg",
-    "title": "Похід на Горгани",
-    "date": "2026-09-18",
-    "location": "Карпати",
-    "duration": "2 дні",
-    "difficulty": "Складна",
-    "price": 2500,
-    "places": 5,
+    "leftPlaces": 1,
     "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
   }
 ]

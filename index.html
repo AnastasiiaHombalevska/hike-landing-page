@@ -3,22 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <meta
       name="description"
       content="Походи Карпатами для тих, хто хоче відчути гори, побачити неймовірні краєвиди та знайти свою пригоду."
     />
-
     <title>Hike — походи та пригоди</title>
-
     <link rel="stylesheet" href="./src/scss/main.scss" />
   </head>
 
   <body>
     <header class="header">
       <div class="container header__container">
-        <a class="logo" href="/" aria-label="Hike — головна"> Hike </a>
-
         <!-- Desktop navigation -->
         <nav class="navigation" aria-label="Головна навігація">
           <ul class="navigation__list">
@@ -47,8 +42,6 @@
             </li>
           </ul>
         </nav>
-
-        <a class="header__tourist-link" href="/tourist.html"> Туристу </a>
 
         <a class="button button--outline" href="#contacts"> Зв'язатись </a>
 
@@ -90,10 +83,6 @@
 
           <li class="mobile-menu__item">
             <a class="mobile-menu__link" href="#gallery"> Галерея </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="/tourist.html"> Туристу </a>
           </li>
 
           <li class="mobile-menu__item">
@@ -156,70 +145,7 @@
             </p>
           </div>
 
-          <article class="hot-spot">
-            <div class="hot-spot__image-wrapper">
-              <img
-                class="hot-spot__image"
-                src="./src/assets/images/hot-spot.jpg"
-                alt="Гірський пейзаж"
-              />
-            </div>
-
-            <div class="hot-spot__content">
-              <span class="hot-spot__label"> -20% </span>
-
-              <h3 class="hot-spot__title">Похід на Горгани</h3>
-
-              <time class="hot-spot__date" datetime="2026-09-18T08:00:00">
-                18–19 вересня
-              </time>
-
-              <div class="hot-spot__prices">
-                <del>2 500 грн</del>
-                <strong>2 000 грн</strong>
-              </div>
-
-              <p class="hot-spot__places">Залишилось 2 місця</p>
-
-              <div
-                class="hot-spot__timer countdown"
-                data-countdown="2026-09-18T08:00:00"
-                aria-label="Зворотній відлік до початку походу"
-              >
-                <div class="countdown__item">
-                  <span class="countdown__value" data-countdown-days> 00 </span>
-
-                  <span class="countdown__label"> днів </span>
-                </div>
-
-                <div class="countdown__item">
-                  <span class="countdown__value" data-countdown-hours>
-                    00
-                  </span>
-
-                  <span class="countdown__label"> годин </span>
-                </div>
-
-                <div class="countdown__item">
-                  <span class="countdown__value" data-countdown-minutes>
-                    00
-                  </span>
-
-                  <span class="countdown__label"> хвилин </span>
-                </div>
-
-                <div class="countdown__item">
-                  <span class="countdown__value" data-countdown-seconds>
-                    00
-                  </span>
-
-                  <span class="countdown__label"> секунд </span>
-                </div>
-              </div>
-
-              <button class="button" type="button">Забронювати</button>
-            </div>
-          </article>
+          <div class="hot-hikes__list"></div>
         </div>
       </section>
 
@@ -289,7 +215,7 @@
             <article class="route-card">
               <img
                 class="route-card__image"
-                src="./src/assets/images/route-1.jpg"
+                src="./src/assets/images/borjava.jpeg"
                 alt="Маршрут у Карпатах"
               />
 
@@ -314,7 +240,7 @@
             <article class="route-card">
               <img
                 class="route-card__image"
-                src="./src/assets/images/route-2.jpg"
+                src="./src/assets/images/gorgany.png"
                 alt="Гірський маршрут"
               />
 
@@ -338,7 +264,7 @@
             <article class="route-card">
               <img
                 class="route-card__image"
-                src="./src/assets/images/route-3.jpg"
+                src="./src/assets/images/svidoves.jpeg"
                 alt="Карпатський маршрут"
               />
 
@@ -641,7 +567,6 @@
     <footer class="footer">
       <div class="container footer__container">
         <div class="footer__brand">
-          <a class="logo" href="/"> Hike </a>
 
           <p>Походи, гори та пригоди.</p>
         </div>
@@ -652,7 +577,6 @@
           <a href="#routes">Маршрути</a>
           <a href="#reviews">Відгуки</a>
           <a href="#gallery">Галерея</a>
-          <a href="/tourist.html">Туристу</a>
           <a href="#faq">FAQ</a>
         </nav>
 

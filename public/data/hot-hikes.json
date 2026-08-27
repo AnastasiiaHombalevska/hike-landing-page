@@ -1,0 +1,17 @@
+
+
+[
+  {
+    "image": "./src/assets/images/gorgany_2.jpg",
+    "title": "Похід на Горгани",
+    "date": "2026-09-18",
+    "location": "Карпати",
+    "duration": "2 дні",
+    "difficulty": "Складна",
+    "price": 2500,
+    "discountPrice": 2000,
+    "places": 5,
+    "leftPlaces": 1,
+    "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
+  }
+]
