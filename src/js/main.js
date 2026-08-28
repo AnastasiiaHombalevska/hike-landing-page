@@ -1,10 +1,5 @@
-'use strict';
-
 document.addEventListener('DOMContentLoaded', function () {
-  /* =====================================================
-     BURGER MENU
-  ===================================================== */
-
+  // BURGER MENU
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('.nav');
 
@@ -54,10 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* =====================================================
-     HIKES
-  ===================================================== */
-
+  // HIKES
   const hikesList = document.querySelector('.hikes__list');
 
   const modal = document.querySelector('#hike-modal');
@@ -95,10 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let hotHikes = [];
   let selectedHike = null;
 
-  /* =====================================================
-     FORMAT HELPERS
-  ===================================================== */
-
+  // FORMAT HELPERS
   function formatPrice(price) {
     return Number(price).toLocaleString('uk-UA') + ' грн';
   }
@@ -134,10 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return 'місць';
   }
 
-  /* =====================================================
-     CREATE HIKE CARD
-  ===================================================== */
-
+  // CREATE HIKE CARD
   function createHikeCard(hike) {
     const article = document.createElement('article');
 
@@ -221,10 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return article;
   }
 
-  /* =====================================================
-     RENDER HIKES
-  ===================================================== */
-
+  // RENDER HIKES
   function renderHikes(data) {
     if (!hikesList) {
       return;
@@ -239,10 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* =====================================================
-     LOAD HIKES FROM JSON
-  ===================================================== */
-
+  // LOAD HIKES FROM JSON
   function loadHikes() {
     if (!hikesList) {
       return;
@@ -265,9 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         renderHikes(hikes);
       })
-      .catch(function (error) {
-        console.error('Помилка завантаження походів:', error);
-
+      .catch(function () {
         hikesList.innerHTML = `
           <p class="hikes__error">
             Не вдалося завантажити розклад походів.
@@ -278,10 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadHikes();
 
-  /* =====================================================
-     HOT HIKES
-  ===================================================== */
-
+  // HOT HIKES
   const hotHikesSection = document.querySelector('.hot-spots');
   const hotHikesList = document.querySelector('.hot-hikes__list');
 
@@ -421,9 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(function (data) {
         if (!Array.isArray(data)) {
-          throw new Error(
-            'hot-hikes.json має містити масив обʼєктів'
-          );
+          throw new Error('hot-hikes.json має містити масив обʼєктів');
         }
 
         hotHikes = data;
@@ -435,32 +408,22 @@ document.addEventListener('DOMContentLoaded', function () {
         renderHotHikes(hotHikes);
       })
       .catch(function (error) {
-        console.error(
-          'Помилка завантаження гарячих походів:',
-          error
-        );
+        throw new Error(error);
       });
   }
 
   loadHotHikes();
 
-  /* =====================================================
-     HOT SPOT COUNTDOWN
-  ===================================================== */
-
+  // HOT SPOT COUNTDOWN
   function initHotHikeCountdowns() {
     const countdowns = document.querySelectorAll('[data-countdown]');
 
     countdowns.forEach(function (countdown) {
       const targetDate = countdown.dataset.countdown;
 
-      const daysElement = countdown.querySelector(
-        '[data-countdown-days]'
-      );
+      const daysElement = countdown.querySelector('[data-countdown-days]');
 
-      const hoursElement = countdown.querySelector(
-        '[data-countdown-hours]'
-      );
+      const hoursElement = countdown.querySelector('[data-countdown-hours]');
 
       const minutesElement = countdown.querySelector(
         '[data-countdown-minutes]'
@@ -470,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '[data-countdown-seconds]'
       );
 
-      let countdownInterval;
+      let countdownInterval = null;
 
       function updateCountdown() {
         const now = new Date().getTime();
@@ -499,21 +462,13 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        const days = Math.floor(
-          difference / (1000 * 60 * 60 * 24)
-        );
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-        const hours = Math.floor(
-          (difference / (1000 * 60 * 60)) % 24
-        );
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
 
-        const minutes = Math.floor(
-          (difference / (1000 * 60)) % 60
-        );
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
 
-        const seconds = Math.floor(
-          (difference / 1000) % 60
-        );
+        const seconds = Math.floor((difference / 1000) % 60);
 
         if (daysElement) {
           daysElement.textContent = String(days).padStart(2, '0');
@@ -537,11 +492,8 @@ document.addEventListener('DOMContentLoaded', function () {
       countdownInterval = setInterval(updateCountdown, 1000);
     });
   }
-  
-  /* =====================================================
-     MODAL
-  ===================================================== */
 
+  // MODAL
   function openModal(hike) {
     if (!modal) {
       return;
@@ -621,10 +573,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* =====================================================
-     BOOKING
-  ===================================================== */
-
+  // BOOKING
   function openBooking(hike) {
     const message =
       'Хочу забронювати похід: ' + hike.title + ', ' + formatDate(hike.date);
@@ -644,10 +593,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* =====================================================
-     HOT SPOT COUNTDOWN
-  ===================================================== */
-
+  // HOT SPOT COUNTDOWN
   const countdown = document.querySelector('[data-countdown]');
 
   if (countdown) {
@@ -661,7 +607,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const secondsElement = countdown.querySelector('[data-countdown-seconds]');
 
-    let countdownInterval;
+    let countdownInterval = null;
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -722,10 +668,7 @@ document.addEventListener('DOMContentLoaded', function () {
     countdownInterval = setInterval(updateCountdown, 1000);
   }
 
-  /* =====================================================
-     FAQ
-  ===================================================== */
-
+  // FAQ
   const faqItems = document.querySelectorAll('.faq-item');
 
   faqItems.forEach(function (item) {
@@ -748,10 +691,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* =====================================================
-     GALLERY
-  ===================================================== */
-
+  // GALLERY
   const galleryTrack = document.querySelector('.gallery__track');
 
   if (galleryTrack) {
