@@ -346,6 +346,7 @@
 
 .how-it-works {
   text-align: center;
+  padding-top: 30px;
 
   .section-heading {
     margin-inline: auto;
@@ -383,8 +384,11 @@
   }
 
   &__title {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 21px;
+    margin-bottom: 10px;
   }
 
   &__description {

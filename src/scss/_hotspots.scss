@@ -1,11 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-$hot-spot-bg: #2e3630;
-$hot-spot-accent: #c5a37f;
-$hot-spot-badge-text: #4a3728;
-$hot-spot-muted: #a0a0a0;
-
 .hot-spots {
   padding-block: 40px;
 
