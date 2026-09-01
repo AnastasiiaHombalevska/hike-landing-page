@@ -133,20 +133,89 @@
         </div>
       </section>
 
-      <section class="hot-spots section" id="hot-spots">
+      <section class="hot-spots section" id="hot-spots" hidden>
         <div class="container">
-          <div class="section-heading">
-            <p class="section-heading__eyebrow">HOT SPOT</p>
-
-            <h2 class="section-heading__title">Гарячі пропозиції</h2>
-
-            <p class="section-heading__description">
-              Вільні місця на найближчі походи за спеціальною ціною.
-            </p>
-          </div>
-
-          <div class="hot-hikes__list"></div>
+          <div class="hot-spots__list" data-hot-spots-list></div>
         </div>
+
+        <template id="hot-spot-template">
+          <article class="hot-spot">
+            <div class="hot-spot__content">
+              <span class="hot-spot__badge">HOT SPOT 🔥</span>
+
+              <div class="hot-spot__body">
+                <h2 class="hot-spot__title">Гаряче місце!</h2>
+                
+                <div class="hot-spot__offer-details">
+                <div class="hot-spot__info">
+                  <p class="hot-spot__details" data-hot-spot-details></p>
+                
+                  <time class="hot-spot__date" data-hot-spot-date></time>
+                </div>
+                
+                <div class="hot-spot__offer">
+                  <div class="hot-spot__prices">
+                    <div class="hot-spot__price"><del data-hot-spot-price></del></div>
+                    <div class="hot-spot__sale-price"><strong data-hot-spot-discount-price></strong></div>
+                  </div>
+                
+                  <div class="hot-spot__actions">
+                    <div class="hot-spot__timer countdown" data-countdown aria-label="Зворотній відлік до початку походу">
+                      <div class="countdown__item">
+                        <span class="countdown__value" data-countdown-days>
+                          00
+                        </span>
+                        <span class="countdown__label">дні</span>
+                      </div>
+                
+                      <span class="countdown__separator" aria-hidden="true">
+                        :
+                      </span>
+                
+                      <div class="countdown__item">
+                        <span class="countdown__value" data-countdown-hours>
+                          00
+                        </span>
+                        <span class="countdown__label">год</span>
+                      </div>
+                
+                      <span class="countdown__separator" aria-hidden="true">
+                        :
+                      </span>
+                
+                      <div class="countdown__item">
+                        <span class="countdown__value" data-countdown-minutes>
+                          00
+                        </span>
+                        <span class="countdown__label">хв</span>
+                      </div>
+                
+                      <span class="countdown__separator" aria-hidden="true">
+                        :
+                      </span>
+                
+                      <div class="countdown__item">
+                        <span class="countdown__value" data-countdown-seconds>
+                          00
+                        </span>
+                        <span class="countdown__label">сек</span>
+                      </div>
+                    </div>
+                
+                    <button class="button hot-spot__button" type="button" data-hot-spot-book>
+                      Забрати місце
+                    </button>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hot-spot__media">
+              <img class="hot-spot__image" data-hot-spot-image alt="" />
+            </div>
+          </article>
+        </template>
       </section>
 
       <section class="how-it-works section">

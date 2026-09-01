@@ -256,117 +256,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadHikes();
 
-  // HOT HIKES
   const hotHikesSection = document.querySelector('.hot-spots');
-  const hotHikesList = document.querySelector('.hot-hikes__list');
+  const hotHikesList = document.querySelector('[data-hot-spots-list]');
+  const hotSpotTemplate = document.querySelector('#hot-spot-template');
 
   function createHotHike(hike) {
-    const article = document.createElement('article');
+    if (!hotSpotTemplate) {
+      return null;
+    }
 
-    article.className = 'hot-spot';
+    const article = hotSpotTemplate.content.firstElementChild.cloneNode(true);
 
-    article.innerHTML = `
-      <div class="hot-spot__image-wrapper">
-        <img
-          class="hot-spot__image"
-          src="${hike.image}"
-          alt="${hike.title}"
-        />
-      </div>
+    const image = article.querySelector('[data-hot-spot-image]');
+    const details = article.querySelector('[data-hot-spot-details]');
+    const date = article.querySelector('[data-hot-spot-date]');
+    const price = article.querySelector('[data-hot-spot-price]');
+    const discountPrice = article.querySelector('[data-hot-spot-discount-price]');
+    const countdown = article.querySelector('[data-countdown]');
+    const bookButton = article.querySelector('[data-hot-spot-book]');
 
-      <div class="hot-spot__content">
-        <span class="hot-spot__label">
-          HOT SPOT
-        </span>
+    if (image) {
+      image.src = hike.image;
+      image.alt = hike.title;
+    }
 
-        <h3 class="hot-spot__title">
-          ${hike.title}
-        </h3>
+    if (details) {
+      details.textContent =
+        'Звільнилося ' +
+        hike.leftPlaces +
+        ' ' +
+        getPlacesWord(hike.leftPlaces) +
+        ' на похід «' +
+        hike.title +
+        '»';
+    }
 
-        <div class="hot-spot__prices">
-          <del>${formatPrice(hike.price)}</del>
-          <strong>${formatPrice(hike.discountPrice)}</strong>
-        </div>
+    if (date) {
+      date.dateTime = hike.date;
+      date.textContent = formatDate(hike.date);
+    }
 
-        <p class="hot-spot__places">
-          Залишилось ${hike.leftPlaces} ${getPlacesWord(hike.leftPlaces)}
-        </p>
+    if (price) {
+      price.textContent = formatPrice(hike.price);
+    }
 
-        <div
-          class="hot-spot__timer countdown"
-          data-countdown="${hike.date}"
-          aria-label="Зворотній відлік до початку походу"
-        >
-          <div class="countdown__item">
-            <span
-              class="countdown__value"
-              data-countdown-days
-            >
-              00
-            </span>
-            <span class="countdown__label">
-              днів
-            </span>
-          </div>
+    if (discountPrice) {
+      discountPrice.textContent = formatPrice(hike.discountPrice);
+    }
 
-          <div class="countdown__item">
-            <span
-              class="countdown__value"
-              data-countdown-hours
-            >
-              00
-            </span>
-            <span class="countdown__label">
-              годин
-            </span>
-          </div>
+    if (countdown) {
+      countdown.dataset.countdown = hike.date;
+    }
 
-          <div class="countdown__item">
-            <span
-              class="countdown__value"
-              data-countdown-minutes
-            >
-              00
-            </span>
-            <span class="countdown__label">
-              хвилин
-            </span>
-          </div>
-
-          <div class="countdown__item">
-            <span
-              class="countdown__value"
-              data-countdown-seconds
-            >
-              00
-            </span>
-            <span class="countdown__label">
-              секунд
-            </span>
-          </div>
-        </div>
-
-        <button
-          class="button"
-          type="button"
-        >
-          Забронювати
-        </button>
-
-      </div>
-    `;
-
-    const bookButton = article.querySelector('.button');
-
-    bookButton.addEventListener('click', function () {
-      openBooking(hike);
-    });
+    if (bookButton) {
+      bookButton.addEventListener('click', function () {
+        openBooking(hike);
+      });
+    }
 
     return article;
   }
 
   function renderHotHikes(data) {
-    if (!hotHikesList) {
+    if (!hotHikesSection || !hotHikesList) {
       return;
     }
 
@@ -375,14 +327,18 @@ document.addEventListener('DOMContentLoaded', function () {
     data.forEach(function (hike) {
       const hotHike = createHotHike(hike);
 
-      hotHikesList.appendChild(hotHike);
+      if (hotHike) {
+        hotHikesList.appendChild(hotHike);
+      }
     });
+
+    hotHikesSection.hidden = data.length === 0;
 
     initHotHikeCountdowns();
   }
 
   function loadHotHikes() {
-    if (!hotHikesSection || !hotHikesList) {
+    if (!hotHikesSection) {
       return;
     }
 

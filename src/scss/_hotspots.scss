@@ -1,25 +1,147 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-.hot-spots {
-  background-color: $color-dark;
-  color: $color-white;
+$hot-spot-bg: #2e3630;
+$hot-spot-accent: #c5a37f;
+$hot-spot-badge-text: #4a3728;
+$hot-spot-muted: #a0a0a0;
 
-  .section-heading {
-    &__description {
-      color: rgba(255, 255, 255, 0.65);
-    }
+.hot-spots {
+  padding-block: 40px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  @include tablet {
+    padding-block: 60px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
 .hot-spot {
   display: grid;
   overflow: hidden;
-  border-radius: 18px;
-  background-color: $color-dark-light;
+  min-height: 280px;
+  border-radius: 16px;
+  background-color: $hot-spot-bg;
+  color: $color-white;
 
-  &__image-wrapper {
-    min-height: 260px;
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 22px 28px;
+  }
+
+  &__badge {
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: $hot-spot-accent;
+    color: $hot-spot-badge-text;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-grow: 1;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  &__details {
+    margin-bottom: 4px;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  &__date {
+    font-size: 15px;
+    line-height: 1.45;
+    color: $hot-spot-accent;
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+
+  &__price {
+    color: $hot-spot-muted;
+    font-size: 14px;
+  }
+
+  &__sale-price {
+    color: $hot-spot-accent;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 18px;
+  }
+
+  &__offer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__button {
+    min-width: 180px;
+    border-radius: 12px;
+    background-color: $hot-spot-accent;
+    color: $color-white;
+
+    &:hover {
+      background-color: #b08d68;
+    }
+  }
+
+  &__media {
+    position: relative;
+    min-height: 180px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(to bottom, $hot-spot-bg 0%, transparent 45%);
+      pointer-events: none;
+    }
   }
 
   &__image {
@@ -28,107 +150,134 @@
     object-fit: cover;
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px 22px;
-  }
-
-  &__label {
-    align-self: flex-start;
-    margin-bottom: 18px;
-    padding: 6px 10px;
-    border-radius: 50px;
-    background-color: $color-accent;
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  &__title {
-    margin-bottom: 10px;
-    font-size: clamp(30px, 8vw, 52px);
-    line-height: 1;
-  }
-
-  &__date {
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.6);
-  }
-
-  &__prices {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-bottom: 8px;
-
-    del {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    strong {
-      font-size: 26px;
-    }
-  }
-
-  &__places {
-    margin-bottom: 10px;
-    color: $color-accent-light;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .button {
-    align-self: flex-start;
-  }
-
   @include tablet {
-    grid-template-columns: 1fr 1fr;
-
-    &__image-wrapper {
-      min-height: 450px;
-    }
+    grid-template-columns: minmax(0, 1.35fr) minmax(220px, 0.85fr);
+    min-height: 300px;
 
     &__content {
-      padding: 40px;
+      padding: 28px 8px 32px 36px;
+    }
+
+    &__offer {
+      flex-shrink: 0;
+    }
+
+    &__media {
+      min-height: 100%;
+
+      &::before {
+        background: linear-gradient(
+          to right,
+          $hot-spot-bg 0%,
+          rgba($hot-spot-bg, 0.55) 28%,
+          transparent 70%
+        );
+      }
+    }
+
+    &__image {
+      position: absolute;
+      inset: 0;
     }
   }
 
   @include desktop {
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: minmax(0, 1.6fr) minmax(230px, 0.7fr);
+
+    &__body {
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    &__content {
+      padding: 32px 16px 36px 44px;
+    }
+
+    &__info {
+      flex: 1;
+      width: 250px;
+      margin-bottom: 0;
+    }
+
+    &__details,
+    &__date {
+      font-size: 18px;
+    }
+
+    &__offer-details {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    &__title {
+      font-size: 42px;
+      white-space: nowrap;
+    }
+
+    &__prices {
+      padding-left: 50px;
+    }
+
+    &__price {
+      font-size: 24px;
+    }
+
+    &__sale-price {
+      font-size: 18px;
+    }
   }
 }
 
 .countdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 28px;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 10px 14px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
 
   &__item {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    gap: 4px;
+    min-width: 36px;
   }
 
   &__value {
-    font-size: 25px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__separator {
+    padding-top: 1px;
+    color: $color-white;
+    font-size: 22px;
     font-weight: 700;
     line-height: 1;
   }
 
   &__label {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 9px;
-    text-transform: uppercase;
+    color: $hot-spot-muted;
+    font-size: 10px;
+    line-height: 1;
   }
 
   @include tablet {
-    display: flex;
-    gap: 24px;
+    gap: 8px;
+    padding: 12px 16px 10px;
 
-    &__value {
-      font-size: 32px;
+    &__item {
+      min-width: 42px;
+    }
+
+    &__value,
+    &__separator {
+      font-size: 26px;
     }
 
     &__label {
