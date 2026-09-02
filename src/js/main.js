@@ -51,16 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
-
   const modal = document.querySelector('#hike-modal');
   const modalOverlay = modal ? modal.querySelector('.modal__overlay') : null;
-
   const modalClose = modal ? modal.querySelector('.modal__close') : null;
-
   const modalImage = modal ? modal.querySelector('.modal__image') : null;
-
   const modalDate = modal ? modal.querySelector('.modal__date') : null;
-
   const modalTitle = modal ? modal.querySelector('.modal__title') : null;
 
   const modalDescription = modal
@@ -125,76 +120,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // CREATE HIKE CARD
   function createHikeCard(hike) {
-    const article = document.createElement('article');
+    const template = document.querySelector('#hikes-template');
 
-    article.className = 'hike-card';
+    const hikeCard = template.content.querySelector('.hike-card').cloneNode(true);
+    console.log('hikeCard:', hikeCard);
 
-    article.innerHTML = `
-      <div class="hike-card__image-wrapper">
-        <img
-          class="hike-card__image"
-          src="${hike.image}"
-          alt="${hike.title}"
-        />
-      </div>
+    const hikeImage = hikeCard.querySelector('.hike-card__image');
+    const hikeTitle = hikeCard.querySelector('.hike-card__title');
+    const hikeDate = hikeCard.querySelector('time');
+    const hikeLocation = hikeCard.querySelector('.hike-card__location');
+    const hikeDuration = hikeCard.querySelector('.hike-card__duration');
+    const hikeDifficulty = hikeCard.querySelector('.hike-card__difficulty');
+    const hikeDescription = hikeCard.querySelector('.hike-card__description');
+    const hikePlaces = hikeCard.querySelector('.hike-card__places');
+    const hikePrice = hikeCard.querySelector('.hike-card__price');
 
-      <div class="hike-card__content">
-        <h3 class="hike-card__title">
-          ${hike.title}
-        </h3>
+    hikeImage.src = hike.image;
+    hikeImage.alt = hike.title;
 
-        <div class="hike-card__details">
-          <div class="hike-card__meta">
-            <time datetime="${hike.date}">
-              ${formatDate(hike.date)}
-            </time>
-          </div>
+    hikeTitle.textContent = hike.title;
 
-          <span class="hike-card__location">${hike.location}</span>
-          <span class="hike-card__duration">${hike.duration}</span>
-          <span class="hike-card__difficulty">${hike.difficulty}</span>
-        </div>
+    hikeDate.textContent = formatDate(hike.date);
+    hikeDate.setAttribute('datetime', hike.date);
 
-        <p class="hike-card__description">
-          ${hike.description}
-        </p>
+    hikeLocation.textContent = hike.location;
+    hikeDuration.textContent = hike.duration;
+    hikeDifficulty.textContent = hike.difficulty;
 
-        <div class="hike-card__footer">
-          <span class="hike-card__places">
-            ${hike.leftPlaces} / ${hike.places} місць
-          </span>
+    hikeDescription.textContent = hike.description;
 
-          <div class="hike-card__price">
-            <strong>
-              ${formatPrice(hike.price)}
-            </strong>
-          </div>
-        </div>
+    hikePlaces.textContent = `${hike.leftPlaces} / ${hike.places} місць`;
 
-        <div class="hike-card__actions">
+    hikePrice.querySelector('strong').textContent = formatPrice(hike.price);
 
-          <button
-            class="button button--secondary hike-card__details-button"
-            type="button"
-          >
-            Детальніше
-          </button>
-
-          <button
-            class="button hike-card__book-button"
-            type="button"
-          >
-            Забронювати
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-    const detailsButton = article.querySelector('.hike-card__details-button');
-
-    const bookButton = article.querySelector('.hike-card__book-button');
+    const detailsButton = hikeCard.querySelector('.hike-card__details-button');
+    const bookButton = hikeCard.querySelector('.hike-card__book-button');
 
     detailsButton.addEventListener('click', function () {
       openModal(hike);
@@ -204,7 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
       openBooking(hike);
     });
 
-    return article;
+    console.log('hike card:', hikeCard);
+
+    return hikeCard;
   }
 
   // RENDER HIKES
@@ -242,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         hikes = data;
-
         renderHikes(hikes);
       })
       .catch(function () {
@@ -554,15 +515,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (countdown) {
     const targetDate = countdown.dataset.countdown;
-
     const daysElement = countdown.querySelector('[data-countdown-days]');
-
     const hoursElement = countdown.querySelector('[data-countdown-hours]');
-
     const minutesElement = countdown.querySelector('[data-countdown-minutes]');
-
     const secondsElement = countdown.querySelector('[data-countdown-seconds]');
-
     let countdownInterval = null;
 
     function updateCountdown() {
@@ -595,11 +551,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-
       const minutes = Math.floor((difference / (1000 * 60)) % 60);
-
       const seconds = Math.floor((difference / 1000) % 60);
 
       if (daysElement) {

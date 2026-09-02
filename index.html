@@ -117,6 +117,8 @@
       </section>
 
       <section class="hikes section" id="hikes">
+
+
         <div class="container">
           <div class="section-heading">
             <p class="section-heading__eyebrow">Обирай свою пригоду</p>
@@ -127,10 +129,56 @@
               Актуальні походи та найближчі дати. Обирай маршрут, який підходить
               саме тобі.
             </p>
-          </div>
-
-          <div class="hikes__list" data-hikes-list></div>
         </div>
+
+        <div class="hikes__list" data-hikes-list></div>
+        </div>
+
+        <template id="hikes-template">
+          <article class="hike-card">
+            <div class="hike-card__image-wrapper">
+              <img class="hike-card__image" src="" alt="" />
+            </div>
+        
+            <div class="hike-card__content">
+              <h3 class="hike-card__title"></h3>
+        
+              <div class="hike-card__details">
+                <div class="hike-card__meta">
+                  <time></time>
+                </div>
+        
+                <span class="hike-card__location"></span>
+                <span class="hike-card__duration"></span>
+                <span class="hike-card__difficulty"></span>
+              </div>
+        
+              <p class="hike-card__description"></p>
+        
+              <div class="hike-card__footer">
+                <span class="hike-card__places">
+                  ${hike.leftPlaces} / ${hike.places} місць
+                </span>
+        
+                <div class="hike-card__price">
+                  <strong>
+                    ${formatPrice(hike.price)}
+                  </strong>
+                </div>
+              </div>
+        
+              <div class="hike-card__actions">
+                <button class="button button--secondary hike-card__details-button" type="button">
+                  Детальніше
+                </button>
+        
+                <button class="button hike-card__book-button" type="button">
+                  Забронювати
+                </button>
+              </div>
+            </div>
+          </article>
+        </template>
       </section>
 
       <section class="hot-spots section" id="hot-spots" hidden>
@@ -628,29 +676,39 @@
     <footer class="footer">
       <div class="container footer__container">
         <div class="footer__brand">
-
-          <p>Походи, гори та пригоди.</p>
+          <p class="footer__brand-header">Походи, гори та пригоди.</p>
         </div>
 
         <nav class="footer__navigation" aria-label="Навігація у футері">
-          <a href="#hikes">Походи</a>
-          <a href="#hot-spots">HOT SPOT</a>
-          <a href="#routes">Маршрути</a>
-          <a href="#reviews">Відгуки</a>
-          <a href="#gallery">Галерея</a>
-          <a href="#faq">FAQ</a>
+          <a class="footer__navigation-link" href="#hikes">Походи</a>
+          <a class="footer__navigation-link" href="#hot-spots">HOT SPOT</a>
+          <a class="footer__navigation-link" href="#routes">Маршрути</a>
+          <a class="footer__navigation-link" href="#reviews">Відгуки</a>
+          <a class="footer__navigation-link" href="#gallery">Галерея</a>
+          <a class="footer__navigation-link" href="#faq">FAQ</a>
         </nav>
 
         <div class="footer__contacts">
-          <a href="tel:+380000000000"> +38 (000) 000-00-00 </a>
+          <a 
+            class="footer__contacts-link icon-tel" 
+            href="tel:+380000000000"
+          > +38 (000) 000-00-00 </a>
 
-          <a href="mailto:hello@hike.com"> hello@hike.com </a>
+          <a 
+            class="footer__contacts-link icon-email" 
+            href="mailto:hello@hike.com"
+          > hello@hike.com </a>
 
-          <a href="https://t.me/" target="_blank" rel="noopener noreferrer">
-            Telegram
+          <a 
+            class="footer__contacts-link icon-telegram"
+            href="https://t.me/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+          > Telegram
           </a>
 
           <a
+            class="footer__contacts-link icon-instagram"
             href="https://instagram.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -661,8 +719,13 @@
       </div>
 
       <div class="footer__bottom">
-        <div class="container">
-          <p>© 2026 Hike. Усі права захищені.</p>
+        <div class="footer__bottom-container">
+          <span class="">Developed by</span>
+          <a 
+            class="footer__contacts-link logo-author"
+            href="https://www.linkedin.com/in/anastasiia-hombalevska/" 
+            target="_blank"
+          ></a>
         </div>
       </div>
     </footer>
