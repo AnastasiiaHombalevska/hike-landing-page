@@ -50,6 +50,7 @@
   &__content {
     display: flex;
     flex: 1;
+    gap: 20px;
     flex-direction: column;
     padding: 22px;
   }
@@ -57,10 +58,9 @@
   &__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 14px;
-    margin-bottom: 10px;
+    gap: 14px;
     color: $color-text-light;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   &__title {
@@ -75,13 +75,26 @@
 
   &__details {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    margin: 0;
-    padding: 0;
+    flex-direction: column;
+    gap: 20px;
+
     list-style: none;
     color: $color-text-light;
-    font-size: 12px;
+    font-size: 14px;
+
+    &-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__location, 
+  &__duration,
+  &__difficulty {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   &__footer {
@@ -92,13 +105,6 @@
     border-top: 1px solid $hot-spot-muted;
     padding-top: 7px;
     margin-top: auto;
-  }
-
-  &__title,
-  &__description,
-  &__details,
-  &__footer {
-    margin-bottom: 10px;
   }
 
   &__price {
@@ -117,8 +123,11 @@
   }
 
   &__places {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     color: $color-accent;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
   }
 
@@ -137,5 +146,30 @@
       padding: 28px;
     }
   }
+}
+
+.hike-card .icon::before {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-calendar::before {
+  background-image: url('/src/assets/icons/calendar.png');
+}
+
+.icon-locatin::before {
+  background-image: url('/src/assets/icons/location.png');
+}
+
+.icon-difficulty::before {
+  background-image: url('/src/assets/icons/difficulties.png');
+}
+
+.icon-duration::before {
+  background-image: url('/src/assets/icons/places.png');
+}
+
+.icon-places::before {
+  background-image: url('/src/assets/icons/people.png');
 }
 

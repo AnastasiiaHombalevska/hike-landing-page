@@ -117,8 +117,6 @@
       </section>
 
       <section class="hikes section" id="hikes">
-
-
         <div class="container">
           <div class="section-heading">
             <p class="section-heading__eyebrow">Обирай свою пригоду</p>
@@ -144,19 +142,21 @@
               <h3 class="hike-card__title"></h3>
         
               <div class="hike-card__details">
-                <div class="hike-card__meta">
+                <div class="hike-card__meta icon icon-calendar">
                   <time></time>
                 </div>
-        
-                <span class="hike-card__location"></span>
-                <span class="hike-card__duration"></span>
-                <span class="hike-card__difficulty"></span>
+
+                <div class="hike-card__details-info">
+                  <span class="hike-card__location icon icon-locatin"></span>
+                  <span class="hike-card__duration icon icon-duration"></span>
+                  <span class="hike-card__difficulty icon icon-difficulty"></span>
+                </div>
               </div>
         
               <p class="hike-card__description"></p>
         
               <div class="hike-card__footer">
-                <span class="hike-card__places">
+                <span class="hike-card__places icon icon-places">
                   ${hike.leftPlaces} / ${hike.places} місць
                 </span>
         
@@ -690,17 +690,17 @@
 
         <div class="footer__contacts">
           <a 
-            class="footer__contacts-link icon-tel" 
+            class="footer__contacts-link icon icon-tel" 
             href="tel:+380000000000"
           > +38 (000) 000-00-00 </a>
 
           <a 
-            class="footer__contacts-link icon-email" 
+            class="footer__contacts-link icon icon-email" 
             href="mailto:hello@hike.com"
           > hello@hike.com </a>
 
           <a 
-            class="footer__contacts-link icon-telegram"
+            class="footer__contacts-link icon icon-telegram"
             href="https://t.me/" 
             target="_blank" 
             rel="noopener noreferrer" 
@@ -708,7 +708,7 @@
           </a>
 
           <a
-            class="footer__contacts-link icon-instagram"
+            class="footer__contacts-link icon icon-instagram"
             href="https://instagram.com/"
             target="_blank"
             rel="noopener noreferrer"

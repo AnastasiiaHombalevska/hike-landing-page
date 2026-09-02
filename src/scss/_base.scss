@@ -44,10 +44,12 @@ img {
 
 button {
   border: 0;
+  outline: none;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 h1,
@@ -62,23 +64,5 @@ ol,
 blockquote,
 dl,
 dd {
-  margin-top: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.5em;
-}
-
-p {
-  margin-bottom: 1em;
-}
-
-ul,
-ol {
-  padding-left: 1.5em;
+  margin: 0;
 }
