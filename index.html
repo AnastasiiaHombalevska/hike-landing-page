@@ -148,7 +148,7 @@
 
                 <div class="hike-card__details-info">
                   <span class="hike-card__location icon icon-locatin"></span>
-                  <span class="hike-card__duration icon icon-duration"></span>
+                  <span class="hike-card__duration icon icon-clock"></span>
                   <span class="hike-card__difficulty icon icon-difficulty"></span>
                 </div>
               </div>
@@ -156,14 +156,10 @@
               <p class="hike-card__description"></p>
         
               <div class="hike-card__footer">
-                <span class="hike-card__places icon icon-places">
-                  ${hike.leftPlaces} / ${hike.places} місць
-                </span>
+                <span class="hike-card__places icon icon-places"></span>
         
                 <div class="hike-card__price">
-                  <strong>
-                    ${formatPrice(hike.price)}
-                  </strong>
+                  <strong></strong>
                 </div>
               </div>
         
@@ -322,75 +318,31 @@
 
           <div class="routes__list">
             <article class="route-card">
-              <img
-                class="route-card__image"
-                src="./src/assets/images/borjava.jpeg"
-                alt="Маршрут у Карпатах"
-              />
-
-              <div class="route-card__content">
-                <span class="route-card__region"> Закарпаття </span>
-
-                <h3 class="route-card__title">Боржава</h3>
-
-                <p class="route-card__description">
-                  Гірський хребет із відкритими панорамами та мальовничими
-                  полонинами.
-                </p>
-
-                <ul class="route-card__details">
-                  <li>18 км</li>
-                  <li>1 день</li>
-                  <li>Середня</li>
-                </ul>
+              <div class="route-card__image-wrapper">
+                <img 
+                  class="route-card__image" 
+                  src="./src/assets/images/borjava.jpeg" 
+                  alt="Маршрут у Карпатах" 
+                />
               </div>
-            </article>
-
-            <article class="route-card">
-              <img
-                class="route-card__image"
-                src="./src/assets/images/gorgany.png"
-                alt="Гірський маршрут"
-              />
 
               <div class="route-card__content">
-                <span class="route-card__region"> Івано-Франківщина </span>
+                <span class="route-card__region icon icon-locatin"> Закарпаття </span>
 
-                <h3 class="route-card__title">Горгани</h3>
+                <div class="route-card__header">
+                  <h3 class="route-card__title">Боржава</h3>
+                  
+                  <p class="route-card__description">
+                    Гірський хребет із відкритими панорамами та мальовничими
+                    полонинами.
+                  </p>
+                </div>
 
-                <p class="route-card__description">
-                  Дикі гори, кам'янисті стежки та неймовірні панорами.
-                </p>
-
-                <ul class="route-card__details">
-                  <li>24 км</li>
-                  <li>2 дні</li>
-                  <li>Складна</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="route-card">
-              <img
-                class="route-card__image"
-                src="./src/assets/images/svidoves.jpeg"
-                alt="Карпатський маршрут"
-              />
-
-              <div class="route-card__content">
-                <span class="route-card__region"> Закарпаття </span>
-
-                <h3 class="route-card__title">Свидовець</h3>
-
-                <p class="route-card__description">
-                  Високогірні озера, полонини та мальовничі хребти.
-                </p>
-
-                <ul class="route-card__details">
-                  <li>20 км</li>
-                  <li>1 день</li>
-                  <li>Середня</li>
-                </ul>
+                <div class="route-card__details">
+                  <span class="route-card__duration icon icon-duration">18 км</span>
+                  <span class="route-card__days icon icon-clock">1 день</span>
+                  <span class="route-card__difficult icon icon-difficulty">Середня</span>
+                </div>
               </div>
             </article>
           </div>

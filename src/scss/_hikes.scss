@@ -161,6 +161,10 @@
   background-image: url('/src/assets/icons/location.png');
 }
 
+.icon-clock::before {
+  background-image: url('/src/assets/icons/clock.png');
+}
+
 .icon-difficulty::before {
   background-image: url('/src/assets/icons/difficulties.png');
 }
