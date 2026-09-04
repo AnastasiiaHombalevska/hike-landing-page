@@ -18,6 +18,14 @@
     display: none;
   }
 
+  &__subtitle-container {
+      display: none;
+  }
+
+  & .hero__subtitle {
+    margin: 0;
+  }
+
   @include desktop {
     &__container {
       gap: 24px;
@@ -36,6 +44,10 @@
       &:hover {
         color: $color-accent;
       }
+    }
+
+     &__subtitle-container {
+      display: block;
     }
   }
 }
