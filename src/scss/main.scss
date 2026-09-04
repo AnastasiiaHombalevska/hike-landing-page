@@ -213,14 +213,13 @@
 }
 
 .mobile-menu {
-  position: fixed;
   z-index: 40;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 90px 24px 40px;
-  background-color: $color-dark;
+  background-color: $color-background;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-15px);
@@ -228,11 +227,29 @@
     opacity 0.35s ease,
     visibility 0.35s ease,
     transform 0.35s ease;
+  position: fixed;
+
+  &::before {
+    content: '';
+    inset: 0;
+    background-image: url('/src/assets/images/mountain-outline.avif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+    top: 50%;
+    position: absolute;
+  }
 
   &.is-open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+  }
+
+  &.is-open::before {
+    opacity: 0.1;
   }
 
   &__list {
@@ -249,7 +266,6 @@
   }
 
   &__link {
-    color: $color-white;
     font-size: 22px;
     font-weight: 500;
     transition: color $transition;
@@ -276,9 +292,6 @@
   background-image: url(/src/assets/images/ukraine_mountains2.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  // background:
-  //   linear-gradient(180deg, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.7) 100%),
-  //   url('../assets/images/hero.jpg') center / cover no-repeat;
   color: $color-white;
 
   &__content {

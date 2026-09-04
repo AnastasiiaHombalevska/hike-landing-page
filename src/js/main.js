@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
   // BURGER MENU
   const menuToggle = document.querySelector('.menu-toggle');
-  const mobileNav = document.querySelector('.nav');
+  const mobileNav = document.querySelector('.mobile-menu');
 
   if (menuToggle && mobileNav) {
-    const mobileLinks = mobileNav.querySelectorAll('.nav__link');
+    const mobileLinks = mobileNav.querySelectorAll('.mobile-menu__link');
 
     function openMenu() {
       menuToggle.classList.add('is-active');
