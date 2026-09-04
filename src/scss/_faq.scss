@@ -12,20 +12,19 @@
   border-bottom: 1px solid $color-border;
 
   &__question {
-    position: relative;
     display: block;
     padding: 20px 35px 20px 0;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
-    list-style: none;
+    // list-style: none;
+    position: relative;
 
     &::-webkit-details-marker {
       display: none;
     }
 
     &::after {
-      position: absolute;
       top: 50%;
       right: 5px;
       width: 9px;
@@ -35,6 +34,7 @@
       content: '';
       transform: translateY(-70%) rotate(45deg);
       transition: transform 0.3s ease;
+      position: absolute;
     }
   }
 

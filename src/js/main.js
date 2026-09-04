@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const template = document.querySelector('#hikes-template');
 
     const hikeCard = template.content.querySelector('.hike-card').cloneNode(true);
-    console.log('hikeCard:', hikeCard);
 
     const hikeImage = hikeCard.querySelector('.hike-card__image');
     const hikeTitle = hikeCard.querySelector('.hike-card__title');
@@ -146,9 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     hikeLocation.textContent = hike.location;
     hikeDuration.textContent = hike.duration;
     hikeDifficulty.textContent = hike.difficulty;
-
     hikeDescription.textContent = hike.description;
-
     hikePlaces.textContent = `${hike.leftPlaces} / ${hike.places} місць`;
 
     hikePrice.querySelector('strong').textContent = formatPrice(hike.price);
@@ -163,8 +160,6 @@ document.addEventListener('DOMContentLoaded', function () {
     bookButton.addEventListener('click', function () {
       openBooking(hike);
     });
-
-    console.log('hike card:', hikeCard);
 
     return hikeCard;
   }
@@ -218,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loadHikes();
 
   const hotHikesSection = document.querySelector('.hot-spots');
-  const hotHikesList = document.querySelector('[data-hot-spots-list]');
+  const hotHikesList = document.querySelector('.hot-spots__list');
   const hotSpotTemplate = document.querySelector('#hot-spot-template');
 
   function createHotHike(hike) {
@@ -330,6 +325,100 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   loadHotHikes();
+
+  // FAQ
+  const faqSection = document.querySelector('.faq');
+  const faqList = document.querySelector('.faq__list');
+  const faqTemplate = document.querySelector('#faq-template');
+
+  function createFaq(faqData) {
+    if (!faqTemplate) {
+      return null;
+    }
+
+    const faqItem = faqTemplate.content.firstElementChild.cloneNode(true);
+
+    const question = faqItem.querySelector('.faq-item__question');
+    const answer = faqItem.querySelector('.faq-item__answer');
+
+    if (question) {
+      question.textContent = faqData.question;
+    }
+
+    if (answer) {
+      answer.textContent = faqData.answer;
+    }
+
+    return faqItem;
+  }
+
+  function renderFaq(data) {
+    if (!faqList) {
+      return;
+    }
+
+    faqList.innerHTML = '';
+
+    data.forEach(function (faq) {
+      const faqItem = createFaq(faq);
+
+      if (faqItem) {
+        faqList.appendChild(faqItem);
+      }
+    });
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (!item.open) {
+          item.classList.remove('is-open');
+
+          return;
+        }
+
+        faqItems.forEach(function (otherItem) {
+          if (otherItem !== item) {
+            otherItem.open = false;
+            otherItem.classList.remove('is-open');
+          }
+        });
+
+        item.classList.add('is-open');
+      });
+    });
+  }
+
+  function loadFaq() {
+    if (!faqSection) {
+      return;
+    }
+
+    fetch('/data/faq.json')
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return response.json();
+      })
+      .then(function (data) {
+        if (!Array.isArray(data)) {
+          throw new Error('faq.json має містити масив обʼєктів');
+        }
+
+        if (data.length === 0) {
+          return;
+        }
+
+        renderFaq(data);
+      })
+      .catch(function (error) {
+        throw new Error(error);
+      });
+  }
+
+  loadFaq();
 
   // HOT SPOT COUNTDOWN
   function initHotHikeCountdowns() {
@@ -576,29 +665,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     countdownInterval = setInterval(updateCountdown, 1000);
   }
-
-  // FAQ
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(function (item) {
-    item.addEventListener('toggle', function () {
-      if (!item.open) {
-        item.classList.remove('is-open');
-
-        return;
-      }
-
-      faqItems.forEach(function (otherItem) {
-        if (otherItem !== item) {
-          otherItem.open = false;
-
-          otherItem.classList.remove('is-open');
-        }
-      });
-
-      item.classList.add('is-open');
-    });
-  });
 
   // GALLERY
   const galleryTrack = document.querySelector('.gallery__track');
