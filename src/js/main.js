@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
+  function loadComponent(selector, path) {
+    const element = document.querySelector(selector);
+
+    if (!element) {
+      return;
+    }
+
+    fetch(path)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return response.text();
+      })
+      .then(function (html) {
+        element.innerHTML = html;
+      })
+      .catch(function (error) {
+        console.error(`Помилка завантаження ${path}:`, error);
+      });
+  }
+
+  loadComponent('#header', '/src/components/header.html');
+  loadComponent('#footer', '/src/components/footer.html');
+
   // BURGER MENU
   const menuToggle = document.querySelector('.menu-toggle');
   const mobileNav = document.querySelector('.mobile-menu');
@@ -62,10 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ? modal.querySelector('.modal__description')
     : null;
 
-  const modalLocation = modal
-    ? modal.querySelector('[data-modal-location]')
-    : null;
-
   const modalDuration = modal
     ? modal.querySelector('[data-modal-duration]')
     : null;
@@ -127,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const hikeImage = hikeCard.querySelector('.hike-card__image');
     const hikeTitle = hikeCard.querySelector('.hike-card__title');
     const hikeDate = hikeCard.querySelector('time');
-    const hikeLocation = hikeCard.querySelector('.hike-card__location');
     const hikeDuration = hikeCard.querySelector('.hike-card__duration');
     const hikeDifficulty = hikeCard.querySelector('.hike-card__difficulty');
     const hikeDescription = hikeCard.querySelector('.hike-card__description');
@@ -142,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
     hikeDate.textContent = formatDate(hike.date);
     hikeDate.setAttribute('datetime', hike.date);
 
-    hikeLocation.textContent = hike.location;
     hikeDuration.textContent = hike.duration;
     hikeDifficulty.textContent = hike.difficulty;
     hikeDescription.textContent = hike.description;
@@ -524,10 +544,6 @@ document.addEventListener('DOMContentLoaded', function () {
       modalDescription.textContent = hike.description;
     }
 
-    if (modalLocation) {
-      modalLocation.textContent = hike.location;
-    }
-
     if (modalDuration) {
       modalDuration.textContent = hike.duration;
     }
@@ -584,7 +600,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const message =
       'Хочу забронювати похід: ' + hike.title + ', ' + formatDate(hike.date);
 
-    const telegramUrl = 'https://t.me/?text=' + encodeURIComponent(message);
+    const telegramUrl =
+      'https://t.me/krischeerful17?text=' + encodeURIComponent(message);
 
     window.open(telegramUrl, '_blank', 'noopener,noreferrer');
   }
@@ -681,6 +698,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // window.history.scrollRestoration = 'manual';
-  // window.scrollTo(0, 0);
+function initHikingTypeFilter() {
+  const buttons = document.querySelectorAll('.hiking-type');
+  const contents = document.querySelectorAll('.equipment-card');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const type = button.classList.contains('type-cabin')
+        ? 'type-cabin'
+        : 'type-tent';
+
+      contents.forEach((content) => {
+        content.classList.toggle('visible', content.classList.contains(type));
+      });
+    });
+  });
+}
+
+  initHikingTypeFilter();
 });
