@@ -12,95 +12,7 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="container header__container">
-        <!-- Desktop navigation -->
-        <div class="header__subtitle-container">
-          <p class="hero__subtitle">Карпати · пригоди · природа</p>
-        </div>
-
-        <nav class="navigation" aria-label="Головна навігація">
-          <ul class="navigation__list">
-            <li class="navigation__item">
-              <a class="navigation__link" href="#hikes">Походи</a>
-            </li>
-
-            <li class="navigation__item">
-              <a class="navigation__link" href="#hot-spots"> HOT SPOT </a>
-            </li>
-
-            <li class="navigation__item">
-              <a class="navigation__link" href="#routes"> Маршрути </a>
-            </li>
-
-            <li class="navigation__item">
-              <a class="navigation__link" href="#reviews"> Відгуки </a>
-            </li>
-
-            <li class="navigation__item">
-              <a class="navigation__link" href="#gallery"> Галерея </a>
-            </li>
-
-            <li class="navigation__item">
-              <a class="navigation__link" href="#faq"> FAQ </a>
-            </li>
-          </ul>
-        </nav>
-
-        <a class="button button--outline" href="#contacts"> Зв'язатись </a>
-
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-label="Відкрити меню"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span class="menu-toggle__line"></span>
-          <span class="menu-toggle__line"></span>
-          <span class="menu-toggle__line"></span>
-        </button>
-      </div>
-
-      <nav
-        class="mobile-menu"
-        id="mobile-menu"
-        aria-label="Мобільна навігація"
-        aria-hidden="true"
-      >
-        <ul class="mobile-menu__list">
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#hikes"> Походи </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#hot-spots"> HOT SPOT </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#routes"> Маршрути </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#reviews"> Відгуки </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#gallery"> Галерея </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="mobile-menu__link" href="#faq"> FAQ </a>
-          </li>
-
-          <li class="mobile-menu__item">
-            <a class="button mobile-menu__button" href="#contacts">
-              Зв'язатись
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <header class="header" id="header"></header>
 
     <main>
       <section class="hero">
@@ -150,23 +62,21 @@
                   <time></time>
                 </div>
 
-                <div class="hike-card__details-info">
-                  <span class="hike-card__location icon icon-locatin"></span>
-                  <span class="hike-card__duration icon icon-clock"></span>
-                  <span class="hike-card__difficulty icon icon-difficulty"></span>
-                </div>
+                <span class="hike-card__duration icon icon-clock"></span>
+
+                <span class="hike-card__difficulty icon icon-difficulty"></span>
               </div>
-        
+
               <p class="hike-card__description"></p>
-        
+
               <div class="hike-card__footer">
                 <span class="hike-card__places icon icon-places"></span>
-        
+
                 <div class="hike-card__price">
                   <strong></strong>
                 </div>
               </div>
-        
+
               <div class="hike-card__actions">
                 <button class="button button--secondary hike-card__details-button" type="button">
                   Детальніше
@@ -490,7 +400,7 @@
 
             <a
               class="button button--outline"
-              href="https://t.me/"
+              href="https://t.me/krischeerful17"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -565,62 +475,7 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <div class="container footer__container">
-        <div class="footer__brand">
-          <p class="footer__brand-header">Походи, гори та пригоди.</p>
-        </div>
-
-        <nav class="footer__navigation" aria-label="Навігація у футері">
-          <a class="footer__navigation-link" href="#hikes">Походи</a>
-          <a class="footer__navigation-link" href="#hot-spots">HOT SPOT</a>
-          <a class="footer__navigation-link" href="#routes">Маршрути</a>
-          <a class="footer__navigation-link" href="#reviews">Відгуки</a>
-          <a class="footer__navigation-link" href="#gallery">Галерея</a>
-          <a class="footer__navigation-link" href="#faq">FAQ</a>
-        </nav>
-
-        <div class="footer__contacts">
-          <a 
-            class="footer__contacts-link icon icon-tel" 
-            href="tel:+380000000000"
-          > +38 (000) 000-00-00 </a>
-
-          <a 
-            class="footer__contacts-link icon icon-email" 
-            href="mailto:hello@hike.com"
-          > hello@hike.com </a>
-
-          <a 
-            class="footer__contacts-link icon icon-telegram"
-            href="https://t.me/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-          > Telegram
-          </a>
-
-          <a
-            class="footer__contacts-link icon icon-instagram"
-            href="https://instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <div class="footer__bottom-container">
-          <span class="">Developed by</span>
-          <a 
-            class="footer__contacts-link logo-author"
-            href="https://www.linkedin.com/in/anastasiia-hombalevska/" 
-            target="_blank"
-          ></a>
-        </div>
-      </div>
-    </footer>
+    <footer class="footer" id="footer"></footer>
     <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

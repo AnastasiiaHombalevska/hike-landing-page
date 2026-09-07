@@ -1,15 +1,19 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'base';
-@use 'header';
-@use 'hikes';
-@use 'hotspots';
-@use 'routes';
-@use 'reviews';
-@use 'gallery';
-@use 'faq';
-@use 'infoModal';
-@use 'footer';
+
+@use './components/header';
+@use './components/footer';
+
+@use './sections/hikes';
+@use './sections/hotspots';
+@use './sections/routes';
+@use './sections/reviews';
+@use './sections/gallery';
+@use './sections/faq';
+@use './sections/infoModal';
+
+@use 'equipment';
 
 .container {
   width: min(100% - 32px, $container-width);
