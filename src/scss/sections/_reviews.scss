@@ -1,6 +1,5 @@
-@use 'variables' as *;
-@use 'mixins' as *;
-
+@use './../variables' as *;
+@use './../mixins' as *;
 
 .reviews {
   &__list {

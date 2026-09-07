@@ -1,38 +1,79 @@
 [
   {
     "image": "./src/assets/images/petros.jpeg",
-    "title": "Похід на Петрос",
-    "date": "2026-09-12",
-    "location": "Карпати",
-    "duration": "1 день",
-    "difficulty": "Середня",
-    "price": 1500,
-    "places": 3,
-    "leftPlaces": 1,
-    "description": "Одноденний похід мальовничим маршрутом із неймовірними краєвидами на Карпати."
+    "title": "Полонина Явірник",
+    "date": "2026-09-19",
+    "duration": "2 дні",
+    "difficulty": "2 / 5",
+    "price": 3800,
+    "places": 6,
+    "leftPlaces": 4,
+    "description": "Треба короткий опис"
   },
   {
     "image": "./src/assets/images/gorgany.png",
-    "title": "Похід на Горгани",
-    "date": "2026-09-18",
-    "location": "Карпати",
+    "title": "Хребет Кострич",
+    "date": "2026-09-23",
     "duration": "2 дні",
-    "difficulty": "Складна",
-    "price": 2500,
-    "places": 5,
-    "leftPlaces": 1,
-    "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
+    "difficulty": "3 / 5",
+    "price": 3900,
+    "places": 6,
+    "leftPlaces": 3,
+    "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany_2.jpg",
-    "title": "Похід на Горгани",
-    "date": "2026-09-18",
-    "location": "Карпати",
+    "image": "./src/assets/images/gorgany.png",
+    "title": "Гаджина | Шпиці | Кізі Улоги",
+    "date": "2026-10-03",
     "duration": "2 дні",
-    "difficulty": "Складна",
-    "price": 2500,
-    "places": 5,
-    "leftPlaces": 1,
-    "description": "Дводенний похід мальовничими маршрутами Горган із ночівлею в горах."
+    "difficulty": "3 / 5",
+    "price": 5900,
+    "places": 6,
+    "leftPlaces": 3,
+    "description": "Треба короткий опис"
+  },
+  {
+    "image": "./src/assets/images/gorgany.png",
+    "title": "Крокус кемп: Кострич | Кукул",
+    "date": "2026-10-09",
+    "duration": "2 дні",
+    "difficulty": "2 / 5",
+    "price": 4600,
+    "places": 7,
+    "leftPlaces": 6,
+    "description": "Треба короткий опис"
+  },
+  {
+    "image": "./src/assets/images/gorgany.png",
+    "title": "Колочава",
+    "date": "2026-10-16",
+    "duration": "3 дні",
+    "difficulty": "2 / 5",
+    "price": 7400,
+    "places": 7,
+    "leftPlaces": 5,
+    "description": "Треба короткий опис"
+  },
+  {
+    "image": "./src/assets/images/gorgany.png",
+    "title": "Ягідна | Костел",
+    "date": "2026-10-24",
+    "duration": "2 дні",
+    "difficulty": "1 / 5",
+    "price": 4800,
+    "places": 7,
+    "leftPlaces": 7,
+    "description": "Треба короткий опис"
+  },
+  {
+    "image": "./src/assets/images/gorgany.png",
+    "title": "Плоска",
+    "date": "2026-10-31",
+    "duration": "2 дні",
+    "difficulty": "2 / 5",
+    "price": 3900,
+    "places": 8,
+    "leftPlaces": 8,
+    "description": "Треба короткий опис"
   }
 ]

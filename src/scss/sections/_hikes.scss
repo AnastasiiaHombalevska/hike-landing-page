@@ -1,5 +1,5 @@
-@use 'variables' as *;
-@use 'mixins' as *;
+@use './../variables' as *;
+@use './../mixins' as *;
 
 .hikes {
   background-color: $color-background;
@@ -75,21 +75,15 @@
 
   &__details {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 20px;
 
     list-style: none;
     color: $color-text-light;
     font-size: 14px;
-
-    &-info {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
   }
 
-  &__location, 
   &__duration,
   &__difficulty {
     display: flex;
@@ -155,10 +149,6 @@
 
 .icon-calendar::before {
   background-image: url('/src/assets/icons/calendar.png');
-}
-
-.icon-locatin::before {
-  background-image: url('/src/assets/icons/location.png');
 }
 
 .icon-clock::before {
