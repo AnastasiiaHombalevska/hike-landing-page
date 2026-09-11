@@ -7,7 +7,6 @@
 
 @use './sections/hikes';
 @use './sections/hotspots';
-@use './sections/routes';
 @use './sections/reviews';
 @use './sections/gallery';
 @use './sections/faq';
@@ -395,6 +394,10 @@
   &__description {
     color: $color-text-light;
     line-height: 1.6;
+
+    &-link {
+      border-bottom: 1px solid $color-accent-dark;
+    }
   }
 }
 

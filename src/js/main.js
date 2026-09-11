@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  loadComponent('#header', './components/header.html', initBurgerMenu);
-  loadComponent('#footer', './components/footer.html');
+  loadComponent('#header', './src/components/header.html', initBurgerMenu);
+  loadComponent('#footer', './src/components/footer.html');
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
@@ -104,15 +104,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalDescription = modal
     ? modal.querySelector('.modal__description')
     : null;
-  const modalDuration = modal
-    ? modal.querySelector('[data-modal-duration]')
+  const modalDistance = modal
+    ? modal.querySelector('[data-modal-distance]')
     : null;
+  const modalPlaces = modal ? modal.querySelector('[data-modal-places]') : null;
   const modalDifficulty = modal
     ? modal.querySelector('[data-modal-difficulty]')
     : null;
-  const modalPlaces = modal
-    ? modal.querySelector('[data-modal-places]')
-    : null;
+
   const modalPrice = modal
     ? modal.querySelector('[data-modal-price]')
     : null;
@@ -555,6 +554,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     selectedHike = hike;
+    // create listf for include? + additional?
+    // create start + finish elements
+    // create route? element
+    // add description? 
+    // add hike type label on the card
 
     if (modalImage) {
       modalImage.src = hike.image;
@@ -579,6 +583,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (modalDifficulty) {
       modalDifficulty.textContent = hike.difficulty;
+    }
+
+    if (modalDuration) {
+      modalDuration.textContent = hike.duration;
     }
 
     if (modalPlaces) {
