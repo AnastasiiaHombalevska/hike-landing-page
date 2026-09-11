@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    fetch('/data/hikes.json')
+    fetch('./data/hikes.json')
       .then(function (response) {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    fetch('/data/hot-hikes.json')
+    fetch('./data/hot-hikes.json')
       .then(function (response) {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    fetch('/data/faq.json')
+    fetch('./data/faq.json')
       .then(function (response) {
         if (!response.ok) {
           throw new Error(`HTTP error: ${response.status}`);
