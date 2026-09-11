@@ -205,7 +205,7 @@
               <h3 class="step__title">Підготуватися</h3>
 
               <p class="step__description">
-                Отримай необхідну інформацію та список спорядження.
+                Отримай необхідну інформацію та <a class="step__description-link" href="/equipment.html">список спорядження</a>.
               </p>
             </li>
 
@@ -218,35 +218,6 @@
               </p>
             </li>
           </ol>
-        </div>
-      </section>
-
-      <section class="routes section" id="routes">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-heading__eyebrow">Досліджуй</p>
-
-            <h2 class="section-heading__title">Маршрути</h2>
-          </div>
-
-          <div class="routes__list">
-            <article class="route-card">
-              <div class="route-card__image-wrapper">
-                <img 
-                  class="route-card__image" 
-                  src="./images/borjava.jpeg" 
-                  alt="Маршрут у Карпатах" 
-                />
-              </div>
-
-              <!--  додати динамічне наповнення ? переробити стилі  -->
-              <div class="route-card__content">
-                <div class="route-card__header">
-                  <h3 class="route-card__title">Боржава</h3>
-                </div>
-              </div>
-            </article>
-          </div>
         </div>
       </section>
 
@@ -428,49 +399,61 @@
           <img class="modal__image" src="" alt="" />
         </div>
 
-        <div class="modal__body">
-          <p class="modal__date"></p>
+      <div class="modal__body">
+        <p class="modal__date"></p>
 
-          <h2 class="modal__title" id="modal-title"></h2>
+        <h2 class="modal__title" id="modal-title"></h2>
 
-          <p class="modal__description"></p>
+        <div class="modal__details">
+          <!-- <div class="modal__detail">
+            <span class="modal__detail__title">Місце</span>
+            <span class="modal__detail__info" data-modal-location></span>
+          </div> -->
 
-          <dl class="modal__details">
-            <div class="modal__detail">
-              <dt>Місце</dt>
-              <dd data-modal-location></dd>
-            </div>
+          <div class="modal__detail">
+            <span class="modal__detail__title">Тривалість</span>
+            <span class="modal__detail__info" data-modal-duration></span>
+          </div>
 
-            <div class="modal__detail">
-              <dt>Тривалість</dt>
-              <dd data-modal-duration></dd>
-            </div>
+          <div class="modal__detail">
+            <span class="modal__detail__title">Довжина</span>
+            <span class="modal__detail__info" data-modal-distance></span>
+          </div>
 
-            <div class="modal__detail">
-              <dt>Довжина</dt>
-              <dd data-modal-distance></dd>
-            </div>
+          <div class="modal__detail">
+            <span class="modal__detail__title">Складність</span>
+            <span class="modal__detail__info" data-modal-difficulty></span>
+          </div>
 
-            <div class="modal__detail">
-              <dt>Складність</dt>
-              <dd data-modal-difficulty></dd>
-            </div>
+          <!-- <div class="modal__detail">
+            <span class="modal__detail__title">Вільні місця</span>
+            <span class="modal__detail__info" data-modal-places></span>
+          </div> -->
 
-            <div class="modal__detail">
-              <dt>Вільні місця</dt>
-              <dd data-modal-places></dd>
-            </div>
-
-            <div class="modal__detail">
-              <dt>Вартість</dt>
-              <dd data-modal-price></dd>
-            </div>
-          </dl>
-
-          <button class="button modal__book-button" type="button">
-            Забронювати
-          </button>
+          <div class="modal__detail">
+            <span class="modal__detail__title">Вартість</span>
+            <span class="modal__detail__info" data-modal-price></span>
+          </div>
         </div>
+
+        <h3 class="modal__subtitle">В ціну входить:</h3>
+        <ul class="modal__list modal__list-include">
+          <li class="modal__list_item modal__list_item-include"></li>
+        </ul>
+
+        <p class="modal__description"></p>
+
+        <h3 class="modal__subtitle">Не входить у вартість:</h3>
+        <ul class="modal__list modal__list-additional">
+          <li class="modal__list_item modal__list_item-additional"></li>
+        </ul>
+
+        <p class="modal__additional-info">Місце бронюється за передоплатою на рахунок ФОП.</p>
+
+        <button class="button modal__book-button" type="button">
+          Забронювати
+        </button>
+      </div>
       </div>
     </div>
 
