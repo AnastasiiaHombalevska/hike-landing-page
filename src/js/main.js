@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  loadComponent('#header', './src/components/header.html', initBurgerMenu);
-  loadComponent('#footer', './src/components/footer.html');
+  loadComponent('#header', './components/header.html', initBurgerMenu);
+  loadComponent('#footer', './components/footer.html');
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
