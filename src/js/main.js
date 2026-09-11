@@ -1,3 +1,5 @@
+import '../scss/main.scss';
+
 document.addEventListener('DOMContentLoaded', function () {
   function loadComponent(selector, path) {
     const element = document.querySelector(selector);
@@ -144,7 +146,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function createHikeCard(hike) {
     const template = document.querySelector('#hikes-template');
 
-    const hikeCard = template.content.querySelector('.hike-card').cloneNode(true);
+    const hikeCard = template.content
+      .querySelector('.hike-card')
+      .cloneNode(true);
 
     const hikeImage = hikeCard.querySelector('.hike-card__image');
     const hikeTitle = hikeCard.querySelector('.hike-card__title');
@@ -247,7 +251,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const details = article.querySelector('[data-hot-spot-details]');
     const date = article.querySelector('[data-hot-spot-date]');
     const price = article.querySelector('[data-hot-spot-price]');
-    const discountPrice = article.querySelector('[data-hot-spot-discount-price]');
+    const discountPrice = article.querySelector(
+      '[data-hot-spot-discount-price]'
+    );
     const countdown = article.querySelector('[data-countdown]');
     const bookButton = article.querySelector('[data-hot-spot-book]');
 
@@ -698,22 +704,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-function initHikingTypeFilter() {
-  const buttons = document.querySelectorAll('.hiking-type');
-  const contents = document.querySelectorAll('.equipment-card');
+  function initHikingTypeFilter() {
+    const buttons = document.querySelectorAll('.hiking-type');
+    const contents = document.querySelectorAll('.equipment-card');
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const type = button.classList.contains('type-cabin')
-        ? 'type-cabin'
-        : 'type-tent';
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const type = button.classList.contains('type-cabin')
+          ? 'type-cabin'
+          : 'type-tent';
 
-      contents.forEach((content) => {
-        content.classList.toggle('visible', content.classList.contains(type));
+        contents.forEach((content) => {
+          content.classList.toggle('visible', content.classList.contains(type));
+        });
       });
     });
-  });
-}
+  }
 
   initHikingTypeFilter();
 });
