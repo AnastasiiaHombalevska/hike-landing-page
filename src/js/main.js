@@ -254,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadHikes();
 
+  // HOT SPOT
   const hotHikesSection = document.querySelector('.hot-spots');
   const hotHikesList = document.querySelector('.hot-spots__list');
   const hotSpotTemplate = document.querySelector('#hot-spot-template');
@@ -369,6 +370,42 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   loadHotHikes();
+
+  //<li class="navigation__item">
+  //        <a class="navigation__link" href="/index.html#hot-spots"> HOT SPOT </a>
+  //      </li>
+  const desctopNavList = this.doctype.querySelector(
+    '.navigation .navigation__list'
+  );
+  const mobileNavList = this.doctype.querySelector(
+    '.mobile-menu .mobile-menu__list'
+  );
+
+  if (mobileNavList) {
+    const newItem = document.createElement('li');
+    newItem.classList.add('mobile-menu__item');
+
+    newItem.innerHTML = `
+      <a class="mobile-menu__link" href="#hot-spots">
+        HOT SPOT
+      </a>
+    `;
+
+    mobileNavList.appendChild(newItem);
+  }
+
+  if (desctopNavList) {
+    const newItem = document.createElement('li');
+    newItem.classList.add('navigation__item');
+
+    newItem.innerHTML = `
+      <a class="navigation__linkk" href="#hot-spots">
+        HOT SPOT
+      </a>
+    `;
+
+    desctopNavList.appendChild(newItem);
+  }
 
   // FAQ
   const faqSection = document.querySelector('.faq');
