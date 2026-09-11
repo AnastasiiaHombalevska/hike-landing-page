@@ -80,7 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  loadComponent('#header', './components/header.html', initBurgerMenu);
+  loadComponent('#header', './components/header.html', function () {
+    initBurgerMenu();
+    addHotSpotLinks();
+  });
   loadComponent('#footer', './components/footer.html');
 
   // HIKES
@@ -371,40 +374,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadHotHikes();
 
-  //<li class="navigation__item">
-  //        <a class="navigation__link" href="/index.html#hot-spots"> HOT SPOT </a>
-  //      </li>
-  const desctopNavList = this.doctype.querySelector(
-    '.navigation .navigation__list'
-  );
-  const mobileNavList = this.doctype.querySelector(
-    '.mobile-menu .mobile-menu__list'
-  );
+  function addHotSpotLinks() {
+    const desctopNavList = this.doctype.querySelector(
+      '.navigation .navigation__list'
+    );
 
-  if (mobileNavList) {
-    const newItem = document.createElement('li');
-    newItem.classList.add('mobile-menu__item');
+    const mobileNavList = this.doctype.querySelector(
+      '.mobile-menu .mobile-menu__list'
+    );
 
-    newItem.innerHTML = `
-      <a class="mobile-menu__link" href="#hot-spots">
-        HOT SPOT
-      </a>
-    `;
+    if (mobileNavList) {
+      const newItem = document.createElement('li');
 
-    mobileNavList.appendChild(newItem);
-  }
+      newItem.classList.add('mobile-menu__item');
 
-  if (desctopNavList) {
-    const newItem = document.createElement('li');
-    newItem.classList.add('navigation__item');
+      newItem.innerHTML = `
+        <a class="mobile-menu__link" href="#hot-spots">
+          HOT SPOT
+        </a>
+      `;
 
-    newItem.innerHTML = `
-      <a class="navigation__linkk" href="#hot-spots">
-        HOT SPOT
-      </a>
-    `;
+      mobileNavList.appendChild(newItem);
+    }
 
-    desctopNavList.appendChild(newItem);
+    if (desctopNavList) {
+      const newItem = document.createElement('li');
+
+      newItem.classList.add('navigation__item');
+
+      newItem.innerHTML = `
+        <a class="navigation__link" href="#hot-spots">
+          HOT SPOT
+        </a>
+      `;
+
+      desctopNavList.appendChild(newItem);
+    }
   }
 
   // FAQ
