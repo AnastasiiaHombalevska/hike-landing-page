@@ -66,8 +66,6 @@
                 <span class="hike-card__difficulty icon icon-difficulty"></span>
               </div>
 
-              <p class="hike-card__description"></p>
-
               <div class="hike-card__footer">
                 <span class="hike-card__places icon icon-places"></span>
 
@@ -400,9 +398,11 @@
         </div>
 
       <div class="modal__body">
-        <p class="modal__date"></p>
-
-        <h2 class="modal__title" id="modal-title"></h2>
+        <div class="modal__body-top">
+          <p class="modal__date"></p>
+                  
+          <h2 class="modal__title" id="modal-title"></h2>
+        </div>
 
         <div class="modal__details">
           <!-- <div class="modal__detail">
@@ -437,16 +437,12 @@
         </div>
 
         <h3 class="modal__subtitle">В ціну входить:</h3>
-        <ul class="modal__list modal__list-include">
-          <li class="modal__list_item modal__list_item-include"></li>
-        </ul>
+        <ul class="modal__list modal__list-include"></ul>
 
         <p class="modal__description"></p>
 
         <h3 class="modal__subtitle">Не входить у вартість:</h3>
-        <ul class="modal__list modal__list-additional">
-          <li class="modal__list_item modal__list_item-additional"></li>
-        </ul>
+        <ul class="modal__list modal__list-additional"></ul>
 
         <p class="modal__additional-info">Місце бронюється за передоплатою на рахунок ФОП.</p>
 

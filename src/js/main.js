@@ -88,36 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
-  const modal = document.querySelector('#hike-modal');
-  const modalOverlay = modal
-    ? modal.querySelector('.modal__overlay')
-    : null;
-  const modalClose = modal
-    ? modal.querySelector('.modal__close')
-    : null;
-  const modalImage = modal
-    ? modal.querySelector('.modal__image')
-    : null;
-  const modalDate = modal
-    ? modal.querySelector('.modal__date')
-    : null;
-  const modalTitle = modal
-    ? modal.querySelector('.modal__title')
-    : null;
-  const modalDescription = modal
-    ? modal.querySelector('.modal__description')
-    : null;
-  const modalDistance = modal
-    ? modal.querySelector('[data-modal-distance]')
-    : null;
-  const modalPlaces = modal ? modal.querySelector('[data-modal-places]') : null;
-  const modalDifficulty = modal
-    ? modal.querySelector('[data-modal-difficulty]')
-    : null;
-
-  const modalPrice = modal
-    ? modal.querySelector('[data-modal-price]')
-    : null;
 
   let hikes = [];
   let hotHikes = [];
@@ -171,9 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const hikeDate = hikeCard.querySelector('time');
     const hikeDuration = hikeCard.querySelector('.hike-card__duration');
     const hikeDifficulty = hikeCard.querySelector('.hike-card__difficulty');
-    const hikeDescription = hikeCard.querySelector(
-      '.hike-card__description'
-    );
     const hikePlaces = hikeCard.querySelector('.hike-card__places');
     const hikePrice = hikeCard.querySelector('.hike-card__price');
 
@@ -187,15 +154,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     hikeDuration.textContent = hike.duration;
     hikeDifficulty.textContent = hike.difficulty;
-    hikeDescription.textContent = hike.description;
 
     hikePlaces.textContent = `${hike.leftPlaces} / ${hike.places} місць`;
 
     hikePrice.querySelector('strong').textContent = formatPrice(hike.price);
 
-    const detailsButton = hikeCard.querySelector(
-      '.hike-card__details-button'
-    );
+    const detailsButton = hikeCard.querySelector('.hike-card__details-button');
     const bookButton = hikeCard.querySelector('.hike-card__book-button');
 
     detailsButton.addEventListener('click', function () {
@@ -375,11 +339,11 @@ document.addEventListener('DOMContentLoaded', function () {
   loadHotHikes();
 
   function addHotSpotLinks() {
-    const desctopNavList = this.doctype.querySelector(
+    const desctopNavList = document.querySelector(
       '.navigation .navigation__list'
     );
 
-    const mobileNavList = this.doctype.querySelector(
+    const mobileNavList = document.querySelector(
       '.mobile-menu .mobile-menu__list'
     );
 
@@ -512,12 +476,8 @@ document.addEventListener('DOMContentLoaded', function () {
     countdowns.forEach(function (countdown) {
       const targetDate = countdown.dataset.countdown;
 
-      const daysElement = countdown.querySelector(
-        '[data-countdown-days]'
-      );
-      const hoursElement = countdown.querySelector(
-        '[data-countdown-hours]'
-      );
+      const daysElement = countdown.querySelector('[data-countdown-days]');
+      const hoursElement = countdown.querySelector('[data-countdown-hours]');
       const minutesElement = countdown.querySelector(
         '[data-countdown-minutes]'
       );
@@ -553,18 +513,10 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
-        const days = Math.floor(
-          difference / (1000 * 60 * 60 * 24)
-        );
-        const hours = Math.floor(
-          (difference / (1000 * 60 * 60)) % 24
-        );
-        const minutes = Math.floor(
-          (difference / (1000 * 60)) % 60
-        );
-        const seconds = Math.floor(
-          (difference / 1000) % 60
-        );
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((difference / (1000 * 60)) % 60);
+        const seconds = Math.floor((difference / 1000) % 60);
 
         if (daysElement) {
           daysElement.textContent = String(days).padStart(2, '0');
@@ -590,18 +542,76 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // MODAL
+  const modal = document.querySelector('#hike-modal');
+
+  const listInclude = modal
+    ? modal.querySelector('.modal__list-include')
+    : null;
+  const listAdditional = modal
+    ? modal.querySelector('.modal__list-additional')
+    : null;
+
+  const modalOverlay = modal ? modal.querySelector('.modal__overlay') : null;
+  const modalClose = modal ? modal.querySelector('.modal__close') : null;
+  const modalImage = modal ? modal.querySelector('.modal__image') : null;
+  const modalDuration = modal ? modal.querySelector('[data-modal-duration]') : null;
+  const modalDate = modal ? modal.querySelector('.modal__date') : null;
+  const modalTitle = modal ? modal.querySelector('.modal__title') : null;
+  const modalDistance = modal
+    ? modal.querySelector('[data-modal-distance]')
+    : null;
+
+  const modalPlaces = modal ? modal.querySelector('[data-modal-places]') : null;
+
+  const modalDifficulty = modal
+    ? modal.querySelector('[data-modal-difficulty]')
+    : null;
+
+  const modalPrice = modal ? modal.querySelector('[data-modal-price]') : null;
+
+  const modalDescription = modal
+    ? modal.querySelector('.modal__description')
+    : null;
+
   function openModal(hike) {
     if (!modal) {
       return;
     }
 
     selectedHike = hike;
-    // create listf for include? + additional?
+    // create list for include? + additional?
     // create start + finish elements
     // create route? element
-    // add description? 
+    // add description?
     // add hike type label on the card
 
+    if (listInclude && hike.include.length > 0) {
+      hike.include.forEach((item) => {
+        const listItem = document.createElement('li');
+
+        listItem.classList.add('modal__list_item', 'modal__list_item-include');
+
+        listItem.textContent = item;
+
+        listInclude.appendChild(listItem);
+      });
+    }
+
+    if (listAdditional && hike.additional.length > 0) {
+      hike.include.forEach((item) => {
+        const listItem = document.createElement('li');
+
+        listItem.classList.add(
+          'modal__list_item',
+          'modal__list_item-additional'
+        );
+
+        listItem.textContent = item;
+
+        listAdditional.appendChild(listItem);
+      });
+    }
+    
     if (modalImage) {
       modalImage.src = hike.image;
       modalImage.alt = hike.title;
@@ -615,25 +625,24 @@ document.addEventListener('DOMContentLoaded', function () {
       modalTitle.textContent = hike.title;
     }
 
-    if (modalDescription) {
-      modalDescription.textContent = hike.description;
-    }
-
     if (modalDuration) {
       modalDuration.textContent = hike.duration;
+    }
+
+    if (modalDistance) {
+      modalDistance.textContent = hike.distance;
+    }
+
+    if (modalDescription) {
+      modalDescription.textContent = hike.description;
     }
 
     if (modalDifficulty) {
       modalDifficulty.textContent = hike.difficulty;
     }
 
-    if (modalDuration) {
-      modalDuration.textContent = hike.duration;
-    }
-
     if (modalPlaces) {
-      modalPlaces.textContent =
-        hike.places + ' ' + getPlacesWord(hike.places);
+      modalPlaces.textContent = hike.places + ' ' + getPlacesWord(hike.places);
     }
 
     if (modalPrice) {
@@ -676,21 +685,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // BOOKING
   function openBooking(hike) {
     const message =
-      'Хочу забронювати похід: ' +
-      hike.title +
-      ', ' +
-      formatDate(hike.date);
+      'Хочу забронювати похід: ' + hike.title + ', ' + formatDate(hike.date);
 
     const telegramUrl =
-      'https://t.me/krischeerful17?text=' +
-      encodeURIComponent(message);
+      'https://t.me/krischeerful17?text=' + encodeURIComponent(message);
 
     window.open(telegramUrl, '_blank', 'noopener,noreferrer');
   }
 
-  const modalBookButton = document.querySelector(
-    '.modal__book-button'
-  );
+  const modalBookButton = document.querySelector('.modal__book-button');
 
   if (modalBookButton) {
     modalBookButton.addEventListener('click', function () {
@@ -706,18 +709,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (countdown) {
     const targetDate = countdown.dataset.countdown;
 
-    const daysElement = countdown.querySelector(
-      '[data-countdown-days]'
-    );
-    const hoursElement = countdown.querySelector(
-      '[data-countdown-hours]'
-    );
-    const minutesElement = countdown.querySelector(
-      '[data-countdown-minutes]'
-    );
-    const secondsElement = countdown.querySelector(
-      '[data-countdown-seconds]'
-    );
+    const daysElement = countdown.querySelector('[data-countdown-days]');
+    const hoursElement = countdown.querySelector('[data-countdown-hours]');
+    const minutesElement = countdown.querySelector('[data-countdown-minutes]');
+    const secondsElement = countdown.querySelector('[data-countdown-seconds]');
 
     let countdownInterval = null;
 
@@ -747,18 +742,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      const days = Math.floor(
-        difference / (1000 * 60 * 60 * 24)
-      );
-      const hours = Math.floor(
-        (difference / (1000 * 60 * 60)) % 24
-      );
-      const minutes = Math.floor(
-        (difference / (1000 * 60)) % 60
-      );
-      const seconds = Math.floor(
-        (difference / 1000) % 60
-      );
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
 
       if (daysElement) {
         daysElement.textContent = String(days).padStart(2, '0');
@@ -808,10 +795,7 @@ document.addEventListener('DOMContentLoaded', function () {
           : 'type-tent';
 
         contents.forEach((content) => {
-          content.classList.toggle(
-            'visible',
-            content.classList.contains(type)
-          );
+          content.classList.toggle('visible', content.classList.contains(type));
         });
       });
     });

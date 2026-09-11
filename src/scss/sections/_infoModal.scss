@@ -87,26 +87,35 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     padding: 26px 20px;
+
+    &-top {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+      }
   }
 
   &__date {
-    margin-bottom: 8px;
+    font-size: 35px;
     color: $color-accent;
-    font-size: 13px;
     font-weight: 600;
   }
 
   &__title {
-    margin-bottom: 14px;
-    font-size: clamp(30px, 8vw, 48px);
+    font-size: 35px;
     line-height: 1;
   }
 
   &__description {
-    margin-bottom: 26px;
     color: $color-text-light;
     line-height: 1.6;
+    margin-bottom: 26px;
   }
 
   &__details {
@@ -122,11 +131,11 @@
     flex-direction: column;
 
     &__title {
-      font-size: 8px;
+      font-size: 16px;
     }
 
     &__info {
-      font-size: 12px;
+      font-size: 22px;
     }
   }
 
@@ -144,6 +153,11 @@
 
     &__body {
       padding: 40px;
+    }
+
+    &__date,
+    &__title {
+      font-size: 28px;
     }
 
     &__details {
