@@ -1,7 +1,7 @@
 import '../scss/main.scss';
 
 document.addEventListener('DOMContentLoaded', function () {
-  function loadComponent(selector, path) {
+  function loadComponent(selector, path, callback) {
     const element = document.querySelector(selector);
 
     if (!element) {
@@ -18,89 +18,104 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(function (html) {
         element.innerHTML = html;
+
+        if (callback) {
+          callback();
+        }
       })
       .catch(function (error) {
         console.error(`Помилка завантаження ${path}:`, error);
       });
   }
 
-  loadComponent('#header', './components/header.html');
-  loadComponent('#footer', './components/footer.html');
-
   // BURGER MENU
-  const menuToggle = document.querySelector('.menu-toggle');
-  const mobileNav = document.querySelector('.mobile-menu');
+  function initBurgerMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-menu');
 
-  if (menuToggle && mobileNav) {
-    const mobileLinks = mobileNav.querySelectorAll('.mobile-menu__link');
+    if (menuToggle && mobileNav) {
+      const mobileLinks = mobileNav.querySelectorAll('.mobile-menu__link');
 
-    function openMenu() {
-      menuToggle.classList.add('is-active');
-      mobileNav.classList.add('is-open');
+      function openMenu() {
+        menuToggle.classList.add('is-active');
+        mobileNav.classList.add('is-open');
 
-      menuToggle.setAttribute('aria-expanded', 'true');
-      menuToggle.setAttribute('aria-label', 'Закрити меню');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Закрити меню');
 
-      document.body.classList.add('menu-open');
-    }
-
-    function closeMenu() {
-      menuToggle.classList.remove('is-active');
-      mobileNav.classList.remove('is-open');
-
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Відкрити меню');
-
-      document.body.classList.remove('menu-open');
-    }
-
-    menuToggle.addEventListener('click', function () {
-      const isOpen = menuToggle.classList.contains('is-active');
-
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
+        document.body.classList.add('menu-open');
       }
-    });
 
-    mobileLinks.forEach(function (link) {
-      link.addEventListener('click', function () {
-        closeMenu();
+      function closeMenu() {
+        menuToggle.classList.remove('is-active');
+        mobileNav.classList.remove('is-open');
+
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Відкрити меню');
+
+        document.body.classList.remove('menu-open');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = menuToggle.classList.contains('is-active');
+
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
-    });
 
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 1024) {
-        closeMenu();
-      }
-    });
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          closeMenu();
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 1024) {
+          closeMenu();
+        }
+      });
+    }
   }
+
+  loadComponent('#header', './components/header.html', initBurgerMenu);
+  loadComponent('#footer', './components/footer.html');
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
   const modal = document.querySelector('#hike-modal');
-  const modalOverlay = modal ? modal.querySelector('.modal__overlay') : null;
-  const modalClose = modal ? modal.querySelector('.modal__close') : null;
-  const modalImage = modal ? modal.querySelector('.modal__image') : null;
-  const modalDate = modal ? modal.querySelector('.modal__date') : null;
-  const modalTitle = modal ? modal.querySelector('.modal__title') : null;
-
+  const modalOverlay = modal
+    ? modal.querySelector('.modal__overlay')
+    : null;
+  const modalClose = modal
+    ? modal.querySelector('.modal__close')
+    : null;
+  const modalImage = modal
+    ? modal.querySelector('.modal__image')
+    : null;
+  const modalDate = modal
+    ? modal.querySelector('.modal__date')
+    : null;
+  const modalTitle = modal
+    ? modal.querySelector('.modal__title')
+    : null;
   const modalDescription = modal
     ? modal.querySelector('.modal__description')
     : null;
-
   const modalDuration = modal
     ? modal.querySelector('[data-modal-duration]')
     : null;
-
   const modalDifficulty = modal
     ? modal.querySelector('[data-modal-difficulty]')
     : null;
-
-  const modalPlaces = modal ? modal.querySelector('[data-modal-places]') : null;
-
-  const modalPrice = modal ? modal.querySelector('[data-modal-price]') : null;
+  const modalPlaces = modal
+    ? modal.querySelector('[data-modal-places]')
+    : null;
+  const modalPrice = modal
+    ? modal.querySelector('[data-modal-price]')
+    : null;
 
   let hikes = [];
   let hotHikes = [];
@@ -123,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // delete func
   function getPlacesWord(number) {
     const value = Number(number);
-
     const lastTwoDigits = value % 100;
     const lastDigit = value % 10;
 
@@ -155,7 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const hikeDate = hikeCard.querySelector('time');
     const hikeDuration = hikeCard.querySelector('.hike-card__duration');
     const hikeDifficulty = hikeCard.querySelector('.hike-card__difficulty');
-    const hikeDescription = hikeCard.querySelector('.hike-card__description');
+    const hikeDescription = hikeCard.querySelector(
+      '.hike-card__description'
+    );
     const hikePlaces = hikeCard.querySelector('.hike-card__places');
     const hikePrice = hikeCard.querySelector('.hike-card__price');
 
@@ -170,11 +186,14 @@ document.addEventListener('DOMContentLoaded', function () {
     hikeDuration.textContent = hike.duration;
     hikeDifficulty.textContent = hike.difficulty;
     hikeDescription.textContent = hike.description;
+
     hikePlaces.textContent = `${hike.leftPlaces} / ${hike.places} місць`;
 
     hikePrice.querySelector('strong').textContent = formatPrice(hike.price);
 
-    const detailsButton = hikeCard.querySelector('.hike-card__details-button');
+    const detailsButton = hikeCard.querySelector(
+      '.hike-card__details-button'
+    );
     const bookButton = hikeCard.querySelector('.hike-card__book-button');
 
     detailsButton.addEventListener('click', function () {
@@ -399,7 +418,6 @@ document.addEventListener('DOMContentLoaded', function () {
       item.addEventListener('toggle', function () {
         if (!item.open) {
           item.classList.remove('is-open');
-
           return;
         }
 
@@ -453,14 +471,15 @@ document.addEventListener('DOMContentLoaded', function () {
     countdowns.forEach(function (countdown) {
       const targetDate = countdown.dataset.countdown;
 
-      const daysElement = countdown.querySelector('[data-countdown-days]');
-
-      const hoursElement = countdown.querySelector('[data-countdown-hours]');
-
+      const daysElement = countdown.querySelector(
+        '[data-countdown-days]'
+      );
+      const hoursElement = countdown.querySelector(
+        '[data-countdown-hours]'
+      );
       const minutesElement = countdown.querySelector(
         '[data-countdown-minutes]'
       );
-
       const secondsElement = countdown.querySelector(
         '[data-countdown-seconds]'
       );
@@ -490,17 +509,21 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
           clearInterval(countdownInterval);
-
           return;
         }
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-
-        const minutes = Math.floor((difference / (1000 * 60)) % 60);
-
-        const seconds = Math.floor((difference / 1000) % 60);
+        const days = Math.floor(
+          difference / (1000 * 60 * 60 * 24)
+        );
+        const hours = Math.floor(
+          (difference / (1000 * 60 * 60)) % 24
+        );
+        const minutes = Math.floor(
+          (difference / (1000 * 60)) % 60
+        );
+        const seconds = Math.floor(
+          (difference / 1000) % 60
+        );
 
         if (daysElement) {
           daysElement.textContent = String(days).padStart(2, '0');
@@ -559,7 +582,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (modalPlaces) {
-      modalPlaces.textContent = hike.places + ' ' + getPlacesWord(hike.places);
+      modalPlaces.textContent =
+        hike.places + ' ' + getPlacesWord(hike.places);
     }
 
     if (modalPrice) {
@@ -567,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     modal.classList.add('is-open');
-
     modal.setAttribute('aria-hidden', 'false');
 
     document.body.classList.add('modal-open');
@@ -579,7 +602,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     modal.classList.remove('is-open');
-
     modal.setAttribute('aria-hidden', 'true');
 
     document.body.classList.remove('modal-open');
@@ -604,15 +626,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // BOOKING
   function openBooking(hike) {
     const message =
-      'Хочу забронювати похід: ' + hike.title + ', ' + formatDate(hike.date);
+      'Хочу забронювати похід: ' +
+      hike.title +
+      ', ' +
+      formatDate(hike.date);
 
     const telegramUrl =
-      'https://t.me/krischeerful17?text=' + encodeURIComponent(message);
+      'https://t.me/krischeerful17?text=' +
+      encodeURIComponent(message);
 
     window.open(telegramUrl, '_blank', 'noopener,noreferrer');
   }
 
-  const modalBookButton = document.querySelector('.modal__book-button');
+  const modalBookButton = document.querySelector(
+    '.modal__book-button'
+  );
 
   if (modalBookButton) {
     modalBookButton.addEventListener('click', function () {
@@ -627,17 +655,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (countdown) {
     const targetDate = countdown.dataset.countdown;
-    const daysElement = countdown.querySelector('[data-countdown-days]');
-    const hoursElement = countdown.querySelector('[data-countdown-hours]');
-    const minutesElement = countdown.querySelector('[data-countdown-minutes]');
-    const secondsElement = countdown.querySelector('[data-countdown-seconds]');
+
+    const daysElement = countdown.querySelector(
+      '[data-countdown-days]'
+    );
+    const hoursElement = countdown.querySelector(
+      '[data-countdown-hours]'
+    );
+    const minutesElement = countdown.querySelector(
+      '[data-countdown-minutes]'
+    );
+    const secondsElement = countdown.querySelector(
+      '[data-countdown-seconds]'
+    );
+
     let countdownInterval = null;
 
     function updateCountdown() {
       const now = new Date().getTime();
-
       const target = new Date(targetDate).getTime();
-
       const difference = target - now;
 
       if (difference <= 0) {
@@ -658,14 +694,21 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         clearInterval(countdownInterval);
-
         return;
       }
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
+      const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+      );
+      const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+      );
+      const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+      );
+      const seconds = Math.floor(
+        (difference / 1000) % 60
+      );
 
       if (daysElement) {
         daysElement.textContent = String(days).padStart(2, '0');
@@ -715,7 +758,10 @@ document.addEventListener('DOMContentLoaded', function () {
           : 'type-tent';
 
         contents.forEach((content) => {
-          content.classList.toggle('visible', content.classList.contains(type));
+          content.classList.toggle(
+            'visible',
+            content.classList.contains(type)
+          );
         });
       });
     });
