@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
-  loadComponent('#header', '/src/components/header.html');
-  loadComponent('#footer', '/src/components/footer.html');
+  loadComponent('#header', './components/header.html');
+  loadComponent('#footer', './components/footer.html');
 
   // BURGER MENU
   const menuToggle = document.querySelector('.menu-toggle');

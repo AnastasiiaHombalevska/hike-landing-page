@@ -1,6 +1,6 @@
 [
   {
-    "image": "./src/assets/images/petros.jpeg",
+    "image": "./images/petros.jpeg",
     "title": "Полонина Явірник",
     "date": "2026-09-19",
     "duration": "2 дні",
@@ -11,7 +11,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Хребет Кострич",
     "date": "2026-09-23",
     "duration": "2 дні",
@@ -22,7 +22,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Гаджина | Шпиці | Кізі Улоги",
     "date": "2026-10-03",
     "duration": "2 дні",
@@ -33,7 +33,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Крокус кемп: Кострич | Кукул",
     "date": "2026-10-09",
     "duration": "2 дні",
@@ -44,7 +44,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Колочава",
     "date": "2026-10-16",
     "duration": "3 дні",
@@ -55,7 +55,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Ягідна | Костел",
     "date": "2026-10-24",
     "duration": "2 дні",
@@ -66,7 +66,7 @@
     "description": "Треба короткий опис"
   },
   {
-    "image": "./src/assets/images/gorgany.png",
+    "image": "./images/gorgany.png",
     "title": "Плоска",
     "date": "2026-10-31",
     "duration": "2 дні",

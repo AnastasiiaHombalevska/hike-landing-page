@@ -236,7 +236,7 @@
   &::before {
     content: '';
     inset: 0;
-    background-image: url('/src/assets/images/mountain-outline.avif');
+    background-image: url('/images/mountain-outline.avif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -293,7 +293,7 @@
   display: flex;
   align-items: flex-end;
   min-height: calc(100svh - 68px);
-  background-image: url(/src/assets/images/ukraine_mountains2.jpg);
+  background-image: url(/images/svidoves.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   color: $color-white;
@@ -341,7 +341,7 @@
 
   @include desktop {
     min-height: calc(100vh - 80px);
-    background-image: url(/src/assets/images/ukraine_mountains.jpg);
+    background-image: url(/images/gorgany.png);
   }
 }
 
