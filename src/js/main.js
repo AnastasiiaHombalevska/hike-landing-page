@@ -576,38 +576,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const start = modal ? document.querySelector('.start') : null;
   const finish = modal ? document.querySelector('.finish') : null;
 
+  let currentHike = null;
+
   function openModal(hike) {
     if (!modal) {
       return;
     }
-    
-    // add hike type label on the card
-    // checck card lists include and additional
 
-    if (listInclude && hike.include.length > 0) {
-      hike.include.forEach((item) => {
-        const listItem = document.createElement('li');
+    currentHike = hike;
 
-        listItem.classList.add('modal__list_item', 'modal__list_item-include');
+    listInclude.innerHTML = '';
+    listAdditional.innerHTML = '';
 
-        listItem.textContent = item;
-
-        listInclude.appendChild(listItem);
-      });
-    }
-
-    if (listAdditional && hike.additional.length > 0) {
-      hike.include.forEach((item) => {
-        const listItem = document.createElement('li');
-
-        listItem.classList.add('modal__list_item', 'modal__list_item-additional');
-
-        listItem.textContent = item;
-
-        listAdditional.appendChild(listItem);
-      });
-    }
-    
     if (modalImage) {
       modalImage.src = hike.image;
       modalImage.alt = hike.title;
@@ -653,9 +633,32 @@ document.addEventListener('DOMContentLoaded', function () {
       modalPrice.textContent = formatPrice(hike.price);
     }
 
+    if (listInclude && hike.include?.length > 0) {
+      hike.include.forEach((item) => {
+        const listItem = document.createElement('li');
+
+        listItem.classList.add('modal__list_item', 'modal__list_item-include');
+
+        listItem.textContent = item;
+
+        listInclude.appendChild(listItem);
+      });
+    }
+
+    if (listAdditional && hike.additional?.length > 0) {
+      hike.additional.forEach((item) => {
+        const listItem = document.createElement('li');
+
+        listItem.classList.add('modal__list_item', 'modal__list_item-additional');
+
+        listItem.textContent = item;
+
+        listAdditional.appendChild(listItem);
+      });
+    }
+
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
-
     document.body.classList.add('modal-open');
   }
 
