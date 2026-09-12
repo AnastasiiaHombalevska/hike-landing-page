@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  loadComponent('#header', './src/components/header.html', function () {
+  loadComponent('#header', './components/header.html', function () {
     initBurgerMenu();
     addHotSpotLinks();
   });
-  loadComponent('#footer', './src/components/footer.html');
+  loadComponent('#footer', './components/footer.html');
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
@@ -572,18 +572,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalDescription = modal
     ? modal.querySelector('.modal__description')
     : null;
+  
+  const start = modal ? document.querySelector('.start') : null;
+  const finish = modal ? document.querySelector('.finish') : null;
 
   function openModal(hike) {
     if (!modal) {
       return;
     }
-
-    selectedHike = hike;
-    // create list for include? + additional?
-    // create start + finish elements
-    // create route? element
-    // add description?
+    
     // add hike type label on the card
+    // checck card lists include and additional
 
     if (listInclude && hike.include.length > 0) {
       hike.include.forEach((item) => {
@@ -601,10 +600,7 @@ document.addEventListener('DOMContentLoaded', function () {
       hike.include.forEach((item) => {
         const listItem = document.createElement('li');
 
-        listItem.classList.add(
-          'modal__list_item',
-          'modal__list_item-additional'
-        );
+        listItem.classList.add('modal__list_item', 'modal__list_item-additional');
 
         listItem.textContent = item;
 
@@ -639,6 +635,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (modalDifficulty) {
       modalDifficulty.textContent = hike.difficulty;
+    }
+
+    if (start) {
+      start.textContent = hike.start;
+    }
+
+    if (finish) {
+      finish.textContent = hike.finish;
     }
 
     if (modalPlaces) {

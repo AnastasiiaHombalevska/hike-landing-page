@@ -146,6 +146,12 @@
     padding-left: 15px;
   }
 
+  &__date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .button {
     width: 100%;
   }
@@ -192,7 +198,10 @@
     &__description,
     .modal__list_item,
     &__additional-info,
-    &__book-button {
+    &__book-button,
+    .start,
+    .finish,
+    .route {
       font-size: 22px;
     }
   }
