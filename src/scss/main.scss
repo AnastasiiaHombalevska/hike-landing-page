@@ -305,7 +305,11 @@
   }
 
   & .hero__title {
+    color: $color-dark-light;
     font-size: 26px;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    white-space: nowrap
   }
 
   &__container {
@@ -330,13 +334,6 @@
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 16px;
-  }
-
-  &__title {
-    // font-size: clamp(44px, 13vw, 88px);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-    margin-bottom: 20px;
   }
 
   &__btn {
@@ -385,7 +382,8 @@
     }
 
     & .hero__title {
-      font-size: 32px;
+      font-size: 30px;
+      margin-top: 25px;
     }
 
     &__btn {
@@ -395,7 +393,11 @@
   
   @include mobile-l {
     &__container {
-      gap: 50px;
+      gap: 35px;
+    }
+
+    & .hero__title {
+      font-size: 32px;
     }
   }
 
@@ -406,13 +408,6 @@
 
     &__container {
       gap: 30px;
-    }
-
-    &__title__container {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
     }
 
     &__btn {

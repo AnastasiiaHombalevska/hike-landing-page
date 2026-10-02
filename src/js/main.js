@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadComponent('#header', './src/components/header.html', function () {
     initBurgerMenu();
-    addHotSpotLinks();
   });
   loadComponent('#footer', './src/components/footer.html');
 
@@ -115,6 +114,15 @@ document.addEventListener('DOMContentLoaded', function () {
       day: 'numeric',
       month: 'long',
     });
+  }
+
+  function isUpcomingHike(dateString) {
+    const hikeDate = new Date(dateString + 'T00:00:00');
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+    return hikeDate > today;
   }
 
   // delete func
@@ -217,8 +225,15 @@ document.addEventListener('DOMContentLoaded', function () {
           throw new Error('hikes.json має містити масив обʼєктів');
         }
 
-        hikes = data;
+        hikes = data.filter(function (hike) {
+          return isUpcomingHike(hike.date);
+        });
+
         renderHikes(hikes);
+
+        if (hotHikes.length > 0) {
+          addHotSpotLinks();
+        }
       })
       .catch(function () {
         hikesList.innerHTML = `
@@ -333,11 +348,9 @@ document.addEventListener('DOMContentLoaded', function () {
           throw new Error('hot-hikes.json має містити масив обʼєктів');
         }
 
-        hotHikes = data;
-
-        if (hotHikes.length === 0) {
-          return;
-        }
+        hotHikes = data.filter(function (hike) {
+          return isUpcomingHike(hike.date) && Number(hike.leftPlaces) > 0;
+        });
 
         renderHotHikes(hotHikes);
       })

@@ -1286,7 +1286,11 @@ dd {
   font-size: 12px;
 }
 .hero .hero__title {
+  color: #2b382f;
   font-size: 26px;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
 }
 .hero__container {
   display: flex;
@@ -1308,11 +1312,6 @@ dd {
   text-align: center;
   text-transform: uppercase;
   margin-bottom: 16px;
-}
-.hero__title {
-  line-height: 0.98;
-  letter-spacing: -0.045em;
-  margin-bottom: 20px;
 }
 .hero__btn {
   margin-bottom: 25px;
@@ -1345,7 +1344,8 @@ dd {
     gap: 30px;
   }
   .hero .hero__title {
-    font-size: 32px;
+    font-size: 30px;
+    margin-top: 25px;
   }
   .hero__btn {
     font-size: 20px;
@@ -1353,7 +1353,10 @@ dd {
 }
 @media (min-width: 430px) {
   .hero__container {
-    gap: 50px;
+    gap: 35px;
+  }
+  .hero .hero__title {
+    font-size: 32px;
   }
 }
 @media (min-width: 768px) {
@@ -1362,12 +1365,6 @@ dd {
   }
   .hero__container {
     gap: 30px;
-  }
-  .hero__title__container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
   .hero__btn {
     font-size: 26px;
