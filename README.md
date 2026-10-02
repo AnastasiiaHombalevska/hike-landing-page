@@ -11,6 +11,7 @@ Landing page built with HTML, SCSS and Vanilla JavaScript.
 
 ## **How to Add New Image**
 
+* First, you need to compress the image; you can use the website https://www.iloveimg.com/uk
 * Name the image without any spaces.
 * Use an English name.
 * Copy the image to the `src/assets/images` folder.
@@ -26,7 +27,7 @@ Landing page built with HTML, SCSS and Vanilla JavaScript.
 
 ```json
 {
-  "image": "./src/assets/images/gorgany_2.jpg",
+  "image": "/src/css/images/gorgany_2.jpg",
   "title": "Похід на Горгани",
   "date": "2026-09-18",
   "location": "Карпати",
@@ -48,7 +49,7 @@ Landing page built with HTML, SCSS and Vanilla JavaScript.
 
 ```json
 {
-  "image": "./src/assets/images/gorgany_2.jpg",
+  "image": "/src/css/images/gorgany_2.jpg",
   "title": "Похід на Горгани",
   "date": "2026-09-18",
   "location": "Карпати",

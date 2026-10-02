@@ -325,23 +325,23 @@ dd {
 }
 
 .icon-calendar::before {
-  background-image: url("/icons/calendar.png");
+  background-image: url("/src/css/icons/calendar.png");
 }
 
 .icon-clock::before {
-  background-image: url("/icons/clock.png");
+  background-image: url("/srccss/icons/clock.png");
 }
 
 .icon-difficulty::before {
-  background-image: url("/icons/difficulties.png");
+  background-image: url("/src/css/icons/difficulties.png");
 }
 
 .icon-duration::before {
-  background-image: url("/icons/places.png");
+  background-image: url("/src/css/icons/places.png");
 }
 
 .icon-places::before {
-  background-image: url("/icons/people.png");
+  background-image: url("/src/css/icons/people.png");
 }
 
 .hot-spots {
@@ -1288,13 +1288,11 @@ dd {
   display: flex;
   align-items: flex-end;
   min-height: calc(100svh - 68px);
-  background-image: url("/src/css/images/gorgany.png") center/cover no-repeat;
   color: #fff;
 }
 .hero__container {
   display: flex;
   justify-content: center;
-  background: radial-gradient(ellipse at center, rgba(243, 241, 233, 0.95) 0%, rgba(243, 241, 233, 0.8) 35%, rgba(243, 241, 233, 0.45) 65%, transparent 100%);
 }
 .hero__content {
   padding-block: 115px;
