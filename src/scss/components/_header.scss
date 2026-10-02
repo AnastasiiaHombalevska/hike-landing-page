@@ -15,10 +15,6 @@
     min-height: 68px;
   }
 
-  &__tourist-link {
-    display: none;
-  }
-
   &__subtitle-container {
       display: none;
   }
@@ -29,22 +25,8 @@
 
   @include desktop {
     &__container {
-      gap: 24px;
+      gap: 20px;
       min-height: 80px;
-    }
-
-    &__tourist-link {
-      display: block;
-      margin-left: 24px;
-      color: $color-text;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color $transition;
-
-      &:hover {
-        color: $color-accent;
-      }
     }
 
      &__subtitle-container {

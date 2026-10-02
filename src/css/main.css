@@ -74,9 +74,6 @@ dd {
   justify-content: space-between;
   min-height: 68px;
 }
-.header__tourist-link {
-  display: none;
-}
 .header__subtitle-container {
   display: none;
 }
@@ -85,20 +82,8 @@ dd {
 }
 @media (min-width: 1024px) {
   .header__container {
-    gap: 24px;
+    gap: 20px;
     min-height: 80px;
-  }
-  .header__tourist-link {
-    display: block;
-    margin-left: 24px;
-    color: #263128;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .header__tourist-link:hover {
-    color: #657b52;
   }
   .header__subtitle-container {
     display: block;
@@ -660,13 +645,22 @@ dd {
   border-radius: 12px;
   object-fit: cover;
 }
+@media (min-width: 390px) {
+  .gallery__item img {
+    height: 480px;
+  }
+}
+@media (min-width: 430px) {
+  .gallery__item img {
+    height: 550px;
+  }
+}
 @media (min-width: 768px) {
   .gallery__item {
     flex-basis: 320px;
-    margin-right: 16px;
   }
   .gallery__item img {
-    height: 550px;
+    height: 430px;
   }
 }
 
@@ -1040,17 +1034,18 @@ dd {
   }
 }
 .container {
-  width: min(100% - 32px, 1280px);
-  margin-inline: auto;
+  width: min(100% - 32px, 375px);
+  overflow: hidden;
+  margin: 0 auto;
 }
 @media (min-width: 768px) {
   .container {
-    width: min(100% - 48px, 1280px);
+    width: min(100% - 48px, 768px);
   }
 }
 @media (min-width: 1024px) {
   .container {
-    width: min(100% - 64px, 1280px);
+    width: min(100% - 64px, 1024px);
   }
 }
 
@@ -1123,16 +1118,15 @@ dd {
   margin-bottom: 36px;
 }
 .section-heading__eyebrow {
-  margin-bottom: 10px;
   color: #657b52;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 .section-heading__title {
   margin-bottom: 14px;
-  font-size: clamp(32px, 9vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
@@ -1158,7 +1152,7 @@ dd {
   .navigation__list {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1166,7 +1160,7 @@ dd {
   .navigation__link {
     position: relative;
     color: #263128;
-    font-size: 22px;
+    font-size: 18px;
     transition: color 0.3s ease;
   }
   .navigation__link::after {
@@ -1290,7 +1284,8 @@ dd {
 .hero {
   background-color: #f3f1e9;
   display: flex;
-  align-items: flex-end;
+  align-content: space-around;
+  flex-wrap: wrap;
   min-height: calc(100dvh - 68px);
   color: #fff;
 }
@@ -1307,8 +1302,11 @@ dd {
   align-items: center;
 }
 .hero__content {
-  color: black;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #263128;
 }
 .hero__subtitle {
   font-size: 18px;
@@ -1325,27 +1323,65 @@ dd {
 }
 .hero__btn {
   margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+}
+.hero__btn::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -70%;
+  width: 45%;
+  height: 300%;
+  background: linear-gradient(90deg, transparent 0%, rgba(169, 187, 152, 0.05) 25%, rgba(255, 255, 255, 0.35) 48%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0.35) 52%, rgba(169, 187, 152, 0.05) 75%, transparent 100%);
+  transform: rotate(25deg);
+  filter: blur(2px);
+  animation: shine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes shine {
+  0%, 70% {
+    left: -60%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+@media (min-width: 390px) {
+  .hero__container {
+    gap: 30px;
+  }
+  .hero .hero__title {
+    font-size: 32px;
+  }
+  .hero__btn {
+    font-size: 20px;
+  }
+}
+@media (min-width: 430px) {
+  .hero__container {
+    gap: 50px;
+  }
 }
 @media (min-width: 768px) {
-  .hero {
-    min-height: 650px;
-  }
   .hero .hero__subtitle {
     font-size: 18px;
   }
   .hero__container {
     gap: 30px;
   }
-  .hero__content {
-    max-width: 1050px;
+  .hero__title__container {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-around;
   }
-  .hero__content .button {
-    font-size: 36px;
-    padding: 24px 28px;
+  .hero__btn {
+    font-size: 26px;
+    color: #263128;
+    border-color: #657b52;
+    background-color: transparent;
+    padding: 16px 24px;
   }
 }
 
@@ -1457,6 +1493,11 @@ dd {
 .cta .button--outline:hover {
   background-color: #fff;
   color: #657b52;
+}
+@media (min-width: 430px) {
+  .cta .button--outline {
+    font-size: 18px;
+  }
 }
 @media (min-width: 768px) {
   .cta__actions {

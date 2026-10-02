@@ -24,7 +24,6 @@
   }
 
   &__item {
-    // flex: 0 0 240px;
     margin-right: 10px;
 
     img {
@@ -34,12 +33,23 @@
       object-fit: cover;
     }
 
+    @include mobile-s {
+      img {
+        height: 480px;
+      }
+    }
+
+    @include mobile-l {
+     img {
+        height: 550px;
+      }
+    }
+
     @include tablet {
       flex-basis: 320px;
-      margin-right: 16px;
 
       img {
-        height: 550px;
+        height: 430px;
       }
     }
   }
