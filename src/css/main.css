@@ -642,7 +642,7 @@ dd {
   overflow: hidden;
 }
 .gallery__track {
-  --gallery-duration: 20s;
+  --gallery-duration: 35s;
   display: flex;
   width: max-content;
   animation: gallery-scroll var(--gallery-duration) linear infinite;
@@ -652,12 +652,11 @@ dd {
   animation-play-state: paused;
 }
 .gallery__item {
-  flex: 0 0 240px;
   margin-right: 10px;
 }
 .gallery__item img {
   width: 100%;
-  aspect-ratio: 4/3;
+  height: 350px;
   border-radius: 12px;
   object-fit: cover;
 }
@@ -665,6 +664,9 @@ dd {
   .gallery__item {
     flex-basis: 320px;
     margin-right: 16px;
+  }
+  .gallery__item img {
+    height: 550px;
   }
 }
 
@@ -1289,16 +1291,24 @@ dd {
   background-color: #f3f1e9;
   display: flex;
   align-items: flex-end;
-  min-height: calc(100svh - 68px);
+  min-height: calc(100dvh - 68px);
   color: #fff;
+}
+.hero .hero__subtitle {
+  font-size: 12px;
+}
+.hero .hero__title {
+  font-size: 26px;
 }
 .hero__container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .hero__content {
-  padding-block: 115px;
   color: black;
+  text-align: center;
 }
 .hero__subtitle {
   font-size: 18px;
@@ -1309,14 +1319,22 @@ dd {
   margin-bottom: 16px;
 }
 .hero__title {
-  margin-bottom: 20px;
-  font-size: clamp(44px, 13vw, 88px);
   line-height: 0.98;
   letter-spacing: -0.045em;
+  margin-bottom: 20px;
+}
+.hero__btn {
+  margin-bottom: 25px;
 }
 @media (min-width: 768px) {
   .hero {
     min-height: 650px;
+  }
+  .hero .hero__subtitle {
+    font-size: 18px;
+  }
+  .hero__container {
+    gap: 30px;
   }
   .hero__content {
     max-width: 1050px;
@@ -1324,7 +1342,6 @@ dd {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-block: 100px;
   }
   .hero__content .button {
     font-size: 36px;

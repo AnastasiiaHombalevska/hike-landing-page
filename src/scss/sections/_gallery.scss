@@ -11,7 +11,7 @@
   }
 
   &__track {
-    --gallery-duration: 20s;
+    --gallery-duration: 35s;
 
     display: flex;
     width: max-content;
@@ -24,12 +24,12 @@
   }
 
   &__item {
-    flex: 0 0 240px;
+    // flex: 0 0 240px;
     margin-right: 10px;
 
     img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 350px;
       border-radius: 12px;
       object-fit: cover;
     }
@@ -37,6 +37,10 @@
     @include tablet {
       flex-basis: 320px;
       margin-right: 16px;
+
+      img {
+        height: 550px;
+      }
     }
   }
 }

@@ -292,29 +292,30 @@
 }
 
 .hero {
-  // position: relative;
   background-color: $color-background;
   display: flex;
   align-items: flex-end;
-  min-height: calc(100svh - 68px);
+  min-height: calc(100dvh - 68px);
   color: $color-white;
 
-  &__container {
-  display: flex;
-  justify-content: center;
+  & .hero__subtitle {
+    font-size: 12px;
+  }
 
-  // background: radial-gradient(
-  //   ellipse at center,
-  //   rgba(243, 241, 233, 0.95) 0%,
-  //   rgba(243, 241, 233, 0.8) 35%,
-  //   rgba(243, 241, 233, 0.45) 65%,
-  //   transparent 100%
-  // );
+  & .hero__title {
+    font-size: 26px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__content {
-    padding-block: 115px;
     color: black;
+    text-align: center;
   }
 
   &__subtitle {
@@ -327,14 +328,26 @@
   }
 
   &__title {
-    margin-bottom: 20px;
-    font-size: clamp(44px, 13vw, 88px);
+    // font-size: clamp(44px, 13vw, 88px);
     line-height: 0.98;
     letter-spacing: -0.045em;
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    margin-bottom: 25px;
   }
 
   @include tablet {
     min-height: 650px;
+
+    & .hero__subtitle {
+      font-size: 18px;
+    }
+
+    &__container {
+      gap: 30px;
+    }
 
     &__content {
       max-width: 1050px;
@@ -342,7 +355,6 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding-block: 100px;
 
       & .button {
         font-size: 36px;

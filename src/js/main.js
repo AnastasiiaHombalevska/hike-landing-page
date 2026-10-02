@@ -1,4 +1,4 @@
-const galleryImg = [
+const galleryImgs = [
   'src/css/images/gallery/IMG_0429.jpg',
   'src/css/images/gallery/IMG_2939.jpg',
   'src/css/images/gallery/IMG_5524.jpg',
@@ -790,16 +790,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const galleryTrack = document.querySelector('.gallery__track');
 
   if (galleryTrack) {
-    const galleryItems = Array.from(galleryTrack.children);
-
-    galleryItems.forEach(function (item) {
-      const clone = item.cloneNode(true);
-
-      clone.setAttribute('aria-hidden', 'true');
-
-      galleryTrack.appendChild(clone);
+    galleryImgs.forEach(function (item) {
+      galleryTrack.insertAdjacentHTML(
+        'beforeend',
+        `<figure class="gallery__item">
+          <img class="gallery__image" src="${item}" alt="Гірський краєвид" />
+        </figure>`
+      );
     });
-  }
+  };
 
   function initHikingTypeFilter() {
     const buttons = document.querySelectorAll('.hiking-type');
