@@ -242,10 +242,7 @@
   &::before {
     content: '';
     inset: 0;
-    background-image: url('/images/mountain-outline.avif');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background: url('/images/mountain-outline.avif') center / cover no-repeat;
     opacity: 0;
     pointer-events: none;
     top: 50%;
@@ -299,9 +296,7 @@
   display: flex;
   align-items: flex-end;
   min-height: calc(100svh - 68px);
-  background-image: url(/images/gorgany.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url('/src/css/images/gorgany.png') center / cover no-repeat;
   color: $color-white;
 
   &__container {
@@ -358,7 +353,7 @@
 
   @include desktop {
     min-height: calc(100vh - 80px);
-    background-image: url(/images/gorgany.png);
+    background: url('/src/css/images/gorgany.png') center / cover no-repeat;
   }
 }
 
