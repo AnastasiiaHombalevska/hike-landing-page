@@ -2,8 +2,15 @@
 @use './../mixins' as *;
 
 .hikes {
-  // background-color: $color-background;
   background-color: $color-dark;
+
+  & .section-heading {
+    color: $color-background;
+  }
+
+  & .section-heading__description {
+    color: $color-background;
+  }
 
   &__list {
     display: grid;

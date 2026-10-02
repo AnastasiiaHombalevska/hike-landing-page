@@ -107,16 +107,6 @@ dd {
 .footer .logo:hover {
   color: #a9bb98;
 }
-.footer__brand {
-  grid-area: brand;
-  grid-column: 1/-1;
-  text-align: center;
-}
-.footer__brand-header {
-  width: 100%;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.55);
-}
 .footer__navigation, .footer__contacts {
   display: flex;
   flex-direction: column;
@@ -151,9 +141,6 @@ dd {
   padding-block: 18px;
 }
 @media (min-width: 768px) {
-  .footer__brand-header {
-    max-width: 250px;
-  }
   .footer__container {
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 50px;
@@ -186,6 +173,12 @@ dd {
 
 .hikes {
   background-color: #1f2923;
+}
+.hikes .section-heading {
+  color: #f3f1e9;
+}
+.hikes .section-heading__description {
+  color: #f3f1e9;
 }
 .hikes__list {
   display: grid;
@@ -1439,8 +1432,8 @@ dd {
 }
 
 .cta {
-  background-color: #657b52;
-  color: #fff;
+  background-color: #f3f1e9;
+  color: #2b382f;
 }
 .cta__container {
   display: flex;
@@ -1465,7 +1458,6 @@ dd {
 .cta__description {
   max-width: 580px;
   margin-bottom: 28px;
-  color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
 }
 .cta__actions {
@@ -1479,16 +1471,17 @@ dd {
 }
 .cta .button {
   background-color: #fff;
-  color: #657b52;
+  color: #2b382f;
+  border-color: #2b382f;
 }
 .cta .button:hover {
   background-color: #1f2923;
   color: #fff;
 }
 .cta .button--outline {
-  border-color: #fff;
   background-color: transparent;
-  color: #fff;
+  color: #2b382f;
+  border-color: #2b382f;
 }
 .cta .button--outline:hover {
   background-color: #fff;

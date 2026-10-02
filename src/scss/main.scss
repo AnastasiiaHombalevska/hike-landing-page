@@ -484,8 +484,8 @@
 }
 
 .cta {
-  background-color: $color-accent;
-  color: $color-white;
+  background-color: $color-background;
+  color: $color-dark-light;
 
   &__container {
     display: flex;
@@ -513,7 +513,6 @@
   &__description {
     max-width: 580px;
     margin-bottom: 28px;
-    color: rgba(255, 255, 255, 0.8);
     line-height: 1.7;
   }
 
@@ -530,7 +529,8 @@
 
   .button {
     background-color: $color-white;
-    color: $color-accent;
+    color: $color-dark-light;
+    border-color: $color-dark-light;
 
     &:hover {
       background-color: $color-dark;
@@ -538,9 +538,9 @@
     }
 
     &--outline {
-      border-color: $color-white;
       background-color: transparent;
-      color: $color-white;
+      color: $color-dark-light;
+      border-color: $color-dark-light;
 
       &:hover {
         background-color: $color-white;

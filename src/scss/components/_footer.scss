@@ -23,18 +23,6 @@
     }
   }
 
-  &__brand {
-    grid-area: brand;
-    grid-column: 1 / -1;
-    text-align: center;
-
-    &-header {
-      width: 100%;
-      margin: 0;
-      color: rgba(255, 255, 255, 0.55);
-    }
-  }
-
   &__navigation,
   &__contacts {
     display: flex;
@@ -78,10 +66,6 @@
   }
 
   @include tablet {
-    &__brand-header {
-      max-width: 250px;
-    }
-
     &__container {
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 50px;
