@@ -292,7 +292,8 @@
 }
 
 .hero {
-  position: relative;
+  // position: relative;
+  background-color: $color-background;
   display: flex;
   align-items: flex-end;
   min-height: calc(100svh - 68px);
@@ -350,13 +351,13 @@
     }
   }
 
-  @include desktop {
-    min-height: calc(100vh - 80px);
-    background: url('/src/css/images/gorgany.png') center / cover no-repeat;
-  }
+  // @include desktop {
+  //   min-height: calc(100vh - 80px);
+  // }
 }
 
 .how-it-works {
+  background-color: $color-background;
   text-align: center;
   padding-top: 30px;
 

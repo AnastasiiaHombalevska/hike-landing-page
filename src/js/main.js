@@ -1,3 +1,15 @@
+const galleryImg = [
+  'src/css/images/gallery/IMG_0429.jpg',
+  'src/css/images/gallery/IMG_2939.jpg',
+  'src/css/images/gallery/IMG_5524.jpg',
+  'src/css/images/gallery/IMG_8468.jpg',
+  'src/css/images/gallery/IMG_9785.jpg',
+  'src/css/images/gallery/IMG_9786.jpg',
+  'src/css/images/gallery/IMG_9796.jpg',
+  'src/css/images/gallery/IMG_9809.jpg',
+  'src/css/images/gallery/IMG_9822.jpg',
+];
+
 document.addEventListener('DOMContentLoaded', function () {
   function loadComponent(selector, path, callback) {
     const element = document.querySelector(selector);

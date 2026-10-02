@@ -62,10 +62,11 @@ dd {
 }
 
 .header {
-  position: relative;
-  z-index: 50;
-  border-bottom: 1px solid #dfe2dc;
   background-color: #f3f1e9;
+  border-bottom: 1px solid #dfe2dc;
+  box-shadow: 0 4px 12px rgba(31, 41, 35, 0.12);
+  z-index: 50;
+  position: relative;
 }
 .header__container {
   display: flex;
@@ -199,7 +200,7 @@ dd {
 }
 
 .hikes {
-  background-color: #f3f1e9;
+  background-color: #1f2923;
 }
 .hikes__list {
   display: grid;
@@ -345,6 +346,7 @@ dd {
 }
 
 .hot-spots {
+  background-color: #f3f1e9;
   padding-block: 40px;
 }
 .hot-spots[hidden] {
@@ -1284,7 +1286,7 @@ dd {
 }
 
 .hero {
-  position: relative;
+  background-color: #f3f1e9;
   display: flex;
   align-items: flex-end;
   min-height: calc(100svh - 68px);
@@ -1329,14 +1331,9 @@ dd {
     padding: 24px 28px;
   }
 }
-@media (min-width: 1024px) {
-  .hero {
-    min-height: calc(100vh - 80px);
-    background: url("/src/css/images/gorgany.png") center/cover no-repeat;
-  }
-}
 
 .how-it-works {
+  background-color: #f3f1e9;
   text-align: center;
   padding-top: 30px;
 }

@@ -2,6 +2,7 @@
 @use './../mixins' as *;
 
 .hot-spots {
+  background-color: $color-background;
   padding-block: 40px;
 
   &[hidden] {
