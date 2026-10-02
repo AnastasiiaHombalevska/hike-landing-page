@@ -1,5 +1,3 @@
-import '../scss/main.scss';
-
 document.addEventListener('DOMContentLoaded', function () {
   function loadComponent(selector, path, callback) {
     const element = document.querySelector(selector);
@@ -80,11 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  loadComponent('#header', './components/header.html', function () {
+  loadComponent('#header', './src/components/header.html', function () {
     initBurgerMenu();
     addHotSpotLinks();
   });
-  loadComponent('#footer', './components/footer.html');
+  loadComponent('#footer', './src/components/footer.html');
 
   // HIKES
   const hikesList = document.querySelector('.hikes__list');
