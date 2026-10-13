@@ -68,6 +68,10 @@
       gap: 50px;
       padding-block: 60px;
     }
+
+    &__navigation &__navigation-link {
+      font-size: 18px;
+    }
   }
 }
 

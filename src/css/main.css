@@ -146,6 +146,9 @@ dd {
     gap: 50px;
     padding-block: 60px;
   }
+  .footer__navigation .footer__navigation-link {
+    font-size: 18px;
+  }
 }
 
 .logo-author {
