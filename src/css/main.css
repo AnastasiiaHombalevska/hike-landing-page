@@ -159,16 +159,12 @@ dd {
   background: url("/src/css/icons/backpack.png") center/contain no-repeat;
 }
 
-.icon-email {
-  background: url("/src/css/icons/") center/contain no-repeat;
+.icon-telegram::before {
+  background: url("/src/css/icons/tg.png") center/contain no-repeat;
 }
 
-.icon-telegram {
-  background: url("/src/css/icons/") center/contain no-repeat;
-}
-
-.icon-instagram {
-  background: url("/src/css/icons/") center/contain no-repeat;
+.icon-instagram::before {
+  background: url("/src/css/icons/instagram.png") center/contain no-repeat;
 }
 
 .hikes {
@@ -308,7 +304,7 @@ dd {
 }
 
 .icon-clock::before {
-  background-image: url("/srccss/icons/clock.png");
+  background-image: url("/src/icons/clock.png");
 }
 
 .icon-difficulty::before {
@@ -1231,7 +1227,7 @@ dd {
 .mobile-menu::before {
   content: "";
   inset: 0;
-  background: url("/images/mountain-outline.avif") center/cover no-repeat;
+  background: url("../css/images/mountain-outline.avif") center/cover no-repeat;
   opacity: 0;
   pointer-events: none;
   top: 50%;

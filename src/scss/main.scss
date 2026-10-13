@@ -116,7 +116,6 @@
 
   &__title {
     margin-bottom: 14px;
-    // font-size: clamp(32px, 9vw, 56px);
     line-height: 1.05;
     letter-spacing: -0.03em;
   }
@@ -243,7 +242,7 @@
   &::before {
     content: '';
     inset: 0;
-    background: url('/images/mountain-outline.avif') center / cover no-repeat;
+    background: url('../css/images/mountain-outline.avif') center / cover no-repeat;
     opacity: 0;
     pointer-events: none;
     top: 50%;
