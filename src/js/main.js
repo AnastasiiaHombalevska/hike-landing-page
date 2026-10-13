@@ -1,3 +1,5 @@
+import { initLazyLoading } from './lazyLoading.js';
+
 const galleryImgs = [
   'src/css/images/gallery/IMG_0429.jpg',
   'src/css/images/gallery/IMG_2939.jpg',
@@ -577,7 +579,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalOverlay = modal ? modal.querySelector('.modal__overlay') : null;
   const modalClose = modal ? modal.querySelector('.modal__close') : null;
   const modalImage = modal ? modal.querySelector('.modal__image') : null;
-  const modalDuration = modal ? modal.querySelector('[data-modal-duration]') : null;
+  const modalDuration = modal
+    ? modal.querySelector('[data-modal-duration]')
+    : null;
   const modalDate = modal ? modal.querySelector('.modal__date') : null;
   const modalTitle = modal ? modal.querySelector('.modal__title') : null;
   const modalDistance = modal
@@ -595,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const modalDescription = modal
     ? modal.querySelector('.modal__description')
     : null;
-  
+
   const start = modal ? document.querySelector('.start') : null;
   const finish = modal ? document.querySelector('.finish') : null;
 
@@ -672,7 +676,10 @@ document.addEventListener('DOMContentLoaded', function () {
       hike.additional.forEach((item) => {
         const listItem = document.createElement('li');
 
-        listItem.classList.add('modal__list_item', 'modal__list_item-additional');
+        listItem.classList.add(
+          'modal__list_item',
+          'modal__list_item-additional'
+        );
 
         listItem.textContent = item;
 
@@ -807,11 +814,12 @@ document.addEventListener('DOMContentLoaded', function () {
       galleryTrack.insertAdjacentHTML(
         'beforeend',
         `<figure class="gallery__item">
-          <img class="gallery__image" src="${item}" alt="Гірський краєвид" />
+          <img class="gallery__image" data-src="${item}" alt="Гірський краєвид" />
         </figure>`
       );
     });
-  };
+    initLazyLoading();
+  }
 
   function initHikingTypeFilter() {
     const buttons = document.querySelectorAll('.hiking-type');
