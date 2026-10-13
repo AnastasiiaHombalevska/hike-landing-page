@@ -95,10 +95,9 @@ dd {
   color: #fff;
 }
 .footer__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "brand ." "nav contacts";
-  row-gap: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding-block: 40px;
 }
 .footer .logo {
@@ -107,17 +106,18 @@ dd {
 .footer .logo:hover {
   color: #a9bb98;
 }
-.footer__navigation, .footer__contacts {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-}
 .footer__navigation {
-  grid-area: nav;
+  display: flex;
+  justify-content: space-around;
+}
+.footer .footer__contacts {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
 }
 .footer__contacts {
-  grid-area: contacts;
+  flex-direction: row;
+  gap: 20px;
 }
 .footer__navigation .footer__navigation-link, .footer__contacts .footer__contacts-link {
   color: rgba(255, 255, 255, 0.7);
@@ -153,10 +153,6 @@ dd {
   background: url("/src/css/icons/logo-hombalevska.png") center/contain no-repeat;
   width: 145px;
   height: 17px;
-}
-
-.icon-tel::before {
-  background: url("/src/css/icons/backpack.png") center/contain no-repeat;
 }
 
 .icon-telegram::before {

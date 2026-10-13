@@ -6,12 +6,9 @@
   color: $color-white;
 
   &__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-    'brand .'
-    'nav contacts';
-    row-gap: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding-block: 40px;
   }
 
@@ -23,20 +20,20 @@
     }
   }
 
-  &__navigation,
-  &__contacts {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
   &__navigation {
-    grid-area: nav;
+    display: flex;
+    justify-content: space-around
+  }
+
+  .footer__contacts {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
   }
 
   &__contacts {
-    grid-area: contacts;
+    flex-direction: row;
+    gap: 20px;
   }
 
   &__navigation &__navigation-link,
@@ -79,10 +76,6 @@
   background: url('/src/css/icons/logo-hombalevska.png') center / contain no-repeat;
   width: 145px;
   height: 17px;
-}
-
-.icon-tel::before {
-  background: url('/src/css/icons/backpack.png') center / contain no-repeat;
 }
 
 .icon-telegram::before {
