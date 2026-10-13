@@ -17,7 +17,7 @@
     width: max-content;
     animation: gallery-scroll var(--gallery-duration) linear infinite;
     will-change: transform;
-
+    
     &:hover {
       animation-play-state: paused;
     }

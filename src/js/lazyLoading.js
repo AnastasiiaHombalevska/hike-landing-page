@@ -1,16 +1,23 @@
-export function initLazyLoading() {
-  const galleryImages = document.querySelectorAll('img[data-src]');
-
-  const observer = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver(
+  (entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.getAttribute('data-src');
-        img.removeAttribute('data-src');
-        observer.unobserve(img);
-      }
-    });
-  });
+      if (!entry.isIntersecting) return;
 
-  galleryImages.forEach((img) => observer.observe(img));
+      entry.target.querySelectorAll('img[data-src]').forEach((img) => {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+      });
+
+      observer.unobserve(entry.target);
+    });
+  },
+  { rootMargin: '200px' }
+);
+
+export function initLazyLoading() {
+  const gallery = document.querySelector('.gallery');
+
+  if (gallery) {
+    observer.observe(gallery);
+  }
 }

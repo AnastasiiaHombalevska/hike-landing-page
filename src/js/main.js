@@ -9,7 +9,7 @@ const galleryImgs = [
   'src/css/images/gallery/IMG_9786.jpg',
   'src/css/images/gallery/IMG_9796.jpg',
   'src/css/images/gallery/IMG_9809.jpg',
-  'src/css/images/gallery/IMG_9822.jpg',
+  'src/css/images/gallery/IMG_9822.jpg'
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -190,6 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
       openBooking(hike);
     });
 
+    initLazyLoading();
+
     return hikeCard;
   }
 
@@ -247,159 +249,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   loadHikes();
-
-  // HOT SPOT
-  const hotHikesSection = document.querySelector('.hot-spots');
-  const hotHikesList = document.querySelector('.hot-spots__list');
-  const hotSpotTemplate = document.querySelector('#hot-spot-template');
-
-  function createHotHike(hike) {
-    if (!hotSpotTemplate) {
-      return null;
-    }
-
-    const article = hotSpotTemplate.content.firstElementChild.cloneNode(true);
-
-    const image = article.querySelector('[data-hot-spot-image]');
-    const details = article.querySelector('[data-hot-spot-details]');
-    const date = article.querySelector('[data-hot-spot-date]');
-    const price = article.querySelector('[data-hot-spot-price]');
-    const discountPrice = article.querySelector(
-      '[data-hot-spot-discount-price]'
-    );
-    const countdown = article.querySelector('[data-countdown]');
-    const bookButton = article.querySelector('[data-hot-spot-book]');
-
-    if (image) {
-      image.src = hike.image;
-      image.alt = hike.title;
-    }
-
-    if (details) {
-      details.textContent =
-        'Звільнилося ' +
-        hike.leftPlaces +
-        ' ' +
-        getPlacesWord(hike.leftPlaces) +
-        ' на похід «' +
-        hike.title +
-        '»';
-    }
-
-    if (date) {
-      date.dateTime = hike.date;
-      date.textContent = formatDate(hike.date);
-    }
-
-    if (price) {
-      price.textContent = formatPrice(hike.price);
-    }
-
-    if (discountPrice) {
-      discountPrice.textContent = formatPrice(hike.discountPrice);
-    }
-
-    if (countdown) {
-      countdown.dataset.countdown = hike.date;
-    }
-
-    if (bookButton) {
-      bookButton.addEventListener('click', function () {
-        openBooking(hike);
-      });
-    }
-
-    return article;
-  }
-
-  function renderHotHikes(data) {
-    if (!hotHikesSection || !hotHikesList) {
-      return;
-    }
-
-    hotHikesList.innerHTML = '';
-
-    data.forEach(function (hike) {
-      const hotHike = createHotHike(hike);
-
-      if (hotHike) {
-        hotHikesList.appendChild(hotHike);
-      }
-    });
-
-    hotHikesSection.hidden = data.length === 0;
-
-    initHotHikeCountdowns();
-  }
-
-  function loadHotHikes() {
-    if (!hotHikesSection) {
-      return;
-    }
-
-    fetch('./data/hot-hikes.json')
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-
-        return response.json();
-      })
-      .then(function (data) {
-        if (!Array.isArray(data)) {
-          throw new Error('hot-hikes.json має містити масив обʼєктів');
-        }
-
-        hotHikes = data.filter(function (hike) {
-          return isUpcomingHike(hike.date) && Number(hike.leftPlaces) > 0;
-        });
-
-        renderHotHikes(hotHikes);
-      })
-      .catch(function (error) {
-        throw new Error(error);
-      });
-  }
-
-  loadHotHikes();
-
-  function addHotSpotLinks() {
-    const desctopNavList = document.querySelector(
-      '.navigation .navigation__list'
-    );
-
-    const mobileNavList = document.querySelector(
-      '.mobile-menu .mobile-menu__list'
-    );
-
-    if (mobileNavList) {
-      const newItem = document.createElement('li');
-
-      newItem.classList.add('mobile-menu__item');
-
-      newItem.innerHTML = `
-        <a class="mobile-menu__link" href="#hot-spots">
-          HOT SPOT
-        </a>
-      `;
-
-      mobileNavList.appendChild(newItem);
-    }
-
-    if (desctopNavList) {
-      const newItem = document.createElement('li');
-
-      newItem.classList.add('navigation__item');
-
-      newItem.innerHTML = `
-        <a class="navigation__link" href="#hot-spots">
-          HOT SPOT
-        </a>
-      `;
-
-      desctopNavList.appendChild(newItem);
-    }
-  }
 
   // FAQ
   const faqSection = document.querySelector('.faq');
@@ -493,78 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   loadFaq();
-
-  // HOT SPOT COUNTDOWN
-  function initHotHikeCountdowns() {
-    const countdowns = document.querySelectorAll('[data-countdown]');
-
-    countdowns.forEach(function (countdown) {
-      const targetDate = countdown.dataset.countdown;
-
-      const daysElement = countdown.querySelector('[data-countdown-days]');
-      const hoursElement = countdown.querySelector('[data-countdown-hours]');
-      const minutesElement = countdown.querySelector(
-        '[data-countdown-minutes]'
-      );
-      const secondsElement = countdown.querySelector(
-        '[data-countdown-seconds]'
-      );
-
-      let countdownInterval = null;
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const target = new Date(targetDate).getTime();
-        const difference = target - now;
-
-        if (difference <= 0) {
-          if (daysElement) {
-            daysElement.textContent = '00';
-          }
-
-          if (hoursElement) {
-            hoursElement.textContent = '00';
-          }
-
-          if (minutesElement) {
-            minutesElement.textContent = '00';
-          }
-
-          if (secondsElement) {
-            secondsElement.textContent = '00';
-          }
-
-          clearInterval(countdownInterval);
-          return;
-        }
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((difference / (1000 * 60)) % 60);
-        const seconds = Math.floor((difference / 1000) % 60);
-
-        if (daysElement) {
-          daysElement.textContent = String(days).padStart(2, '0');
-        }
-
-        if (hoursElement) {
-          hoursElement.textContent = String(hours).padStart(2, '0');
-        }
-
-        if (minutesElement) {
-          minutesElement.textContent = String(minutes).padStart(2, '0');
-        }
-
-        if (secondsElement) {
-          secondsElement.textContent = String(seconds).padStart(2, '0');
-        }
-      }
-
-      updateCountdown();
-
-      countdownInterval = setInterval(updateCountdown, 1000);
-    });
-  }
 
   // MODAL
   const modal = document.querySelector('#hike-modal');
@@ -738,72 +515,6 @@ document.addEventListener('DOMContentLoaded', function () {
         openBooking(selectedHike);
       }
     });
-  }
-
-  // HOT SPOT COUNTDOWN
-  const countdown = document.querySelector('[data-countdown]');
-
-  if (countdown) {
-    const targetDate = countdown.dataset.countdown;
-
-    const daysElement = countdown.querySelector('[data-countdown-days]');
-    const hoursElement = countdown.querySelector('[data-countdown-hours]');
-    const minutesElement = countdown.querySelector('[data-countdown-minutes]');
-    const secondsElement = countdown.querySelector('[data-countdown-seconds]');
-
-    let countdownInterval = null;
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const target = new Date(targetDate).getTime();
-      const difference = target - now;
-
-      if (difference <= 0) {
-        if (daysElement) {
-          daysElement.textContent = '00';
-        }
-
-        if (hoursElement) {
-          hoursElement.textContent = '00';
-        }
-
-        if (minutesElement) {
-          minutesElement.textContent = '00';
-        }
-
-        if (secondsElement) {
-          secondsElement.textContent = '00';
-        }
-
-        clearInterval(countdownInterval);
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((difference / (1000 * 60)) % 60);
-      const seconds = Math.floor((difference / 1000) % 60);
-
-      if (daysElement) {
-        daysElement.textContent = String(days).padStart(2, '0');
-      }
-
-      if (hoursElement) {
-        hoursElement.textContent = String(hours).padStart(2, '0');
-      }
-
-      if (minutesElement) {
-        minutesElement.textContent = String(minutes).padStart(2, '0');
-      }
-
-      if (secondsElement) {
-        secondsElement.textContent = String(seconds).padStart(2, '0');
-      }
-    }
-
-    updateCountdown();
-
-    countdownInterval = setInterval(updateCountdown, 1000);
   }
 
   // GALLERY
