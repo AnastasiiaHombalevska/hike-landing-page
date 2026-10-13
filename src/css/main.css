@@ -968,6 +968,7 @@ dd {
 
 .equipment-group {
   display: flex;
+  flex-direction: column;
   padding: 24px;
   border: 1px solid #657b52;
 }
@@ -982,7 +983,6 @@ dd {
 
 .equipment-list {
   flex: 3;
-  border-left: 1px solid #657b52;
 }
 
 .equipment-list__item {
@@ -1015,8 +1015,14 @@ dd {
 }
 
 @media (min-width: 768px) {
+  .equipment-group {
+    flex-direction: row;
+  }
   .equipment-card {
     padding: 40px;
+  }
+  .equipment-list {
+    border-left: 1px solid #657b52;
   }
   .equipment-card__content {
     gap: 40px;
